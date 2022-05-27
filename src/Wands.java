@@ -9,4 +9,10 @@ public class Wands extends Weapons{
         super.type = "Wand";
     }
 
+    public double heal(){
+        //This method will heal characters.
+        return 0;
+    }
+
+
 }

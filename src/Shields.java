@@ -9,4 +9,8 @@ public class Shields extends Weapons{
         super.type = "Shield";
     }
 
+    public void stun(){
+        //This will stun the enemy for one turn.
+    }
+
 }

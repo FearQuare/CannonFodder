@@ -9,4 +9,13 @@ public class Swords extends Weapons{
         super.type = "Sword";
     }
 
+    public void keepAway(){
+        //This make enemies away
+        int x = 1;
+    }
+
+    public void block(){
+        //This can block an enemy but consumes your turns.
+    }
+
 }

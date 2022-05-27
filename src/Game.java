@@ -2,9 +2,9 @@ import java.lang.Math;
 
 public class Game {
 
-    private static int level = 0;
-    private static double enemyAmount = 1;
-    private static int turn = 0;
+    private static int level = 0; //Level starts with zero and with 1 enemy
+    private static double enemyAmount = 1; // Enemy amount is 1
+    private static int turn = 0; //Turns are counted beginning with a zero
 
     public static void main(String[] args) {
 
@@ -28,13 +28,13 @@ public class Game {
         System.out.println("In each level, the amount of the enemy you need to fought with will increase 2 times.");
 
     }
-
+    //Level increasing function
     public static void increaseLevel(){
         //a method to increase level, we implemented this metod for the readibility purposes.
         level ++;
         enemyAmount = Math.pow(2, level);
     }
-
+    //Turn counter, because there are 3 characters there will be 3 turns.
     public static int turnCount(int turn){
         if(turn<2){
             turn ++;

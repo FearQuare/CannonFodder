@@ -14,5 +14,27 @@ public class Weapons extends Items{
         this.star = star;
     }
 
+    public double getDamage() {
+        return damage;
+    }
 
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
+    }
 }

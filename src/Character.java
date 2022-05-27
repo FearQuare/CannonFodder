@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//The character will have a HP
 public class Character {
 
     protected String name;
@@ -8,7 +8,7 @@ public class Character {
     protected int vitality;
     protected int intelligence;
     protected Weapons weapon;
-
+    protected Clothings clothing;
     private Scanner sc = new Scanner(System.in);
 
     public Character() {
@@ -18,6 +18,18 @@ public class Character {
         this.strength = 0;
         this.vitality = 0;
         this.weapon = new Weapons();
+        this.clothing = new Clothings();
+    }
+
+    public Character(String name, String gender, int vitality, int intelligence, int strength, Weapons weapon, Clothings clothing) {
+        this.name = name;
+        this.gender = gender;
+        this.vitality = vitality;
+        this.strength = strength;
+        this.intelligence = intelligence;
+        this.weapon = weapon;
+        this.clothing = clothing;
+
     }
 
     public double calculateDamage(){
@@ -31,14 +43,24 @@ public class Character {
         }
     }
 
-    public Character(String name, String gender, int vitality, int intelligence, int strength, Weapons weapon) {
-        this.name = name;
-        this.gender = gender;
-        this.vitality = vitality;
-        this.strength = strength;
-        this.intelligence = intelligence;
-        this.weapon = weapon;
-
+    public void setWeapon() {
+        System.out.println("Please pick a default weapon: \nFor wand press 1\nFor sword press 2\nFor shield press 3");
+        int choice = sc.nextInt();
+        sc.nextLine();
+        switch(choice){
+            case 1:
+                this.weapon = new Wands();
+                break;
+            case 2:
+                this.weapon = new Swords();
+                break;
+            case 3:
+                this.weapon = new Shields();
+                break;
+            default:
+                System.out.println("Please enter a valid integer to pick a weapon.");
+                break;
+        }
     }
 
     public int getStrength() {
@@ -69,26 +91,6 @@ public class Character {
         return weapon;
     }
 
-    public void setWeapon() {
-        System.out.println("Please pick a default weapon: \nFor wand press 1\nFor sword press 2\nFor shield press 3");
-        int choice = sc.nextInt();
-        sc.nextLine();
-        switch(choice){
-            case 1:
-                this.weapon = new Wands();
-                break;
-            case 2:
-                this.weapon = new Swords();
-                break;
-            case 3:
-                this.weapon = new Shields();
-                break;
-            default:
-                System.out.println("Please enter a valid integer to pick a weapon.");
-                break;
-        }
-    }
-
     public String getName() {
         return name;
     }
@@ -103,5 +105,25 @@ public class Character {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public void setWeapon(Weapons weapon) {
+        this.weapon = weapon;
+    }
+
+    public Clothings getClothing() {
+        return clothing;
+    }
+
+    public void setClothing(Clothings clothing) {
+        this.clothing = clothing;
+    }
+
+    public Scanner getSc() {
+        return sc;
+    }
+
+    public void setSc(Scanner sc) {
+        this.sc = sc;
     }
 }

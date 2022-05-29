@@ -3,6 +3,7 @@ public class Items {
     protected String name;
     protected double weight;
     protected int value;
+    protected String category;
 
     public Items() {
     }

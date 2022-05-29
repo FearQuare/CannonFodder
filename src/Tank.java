@@ -1,9 +1,10 @@
-public class Tank extends Character{
+import java.util.ArrayList;
 
+public class Tank extends Character{
     public Tank() {
     }
 
-    public Tank(String name, String gender, int vitality, int intelligence, int strength, Weapons weapon, Clothings clothing) {
-        super(name, gender, vitality, intelligence, strength, weapon, clothing);
+    public Tank(String name, int strength, int vitality, int intelligence, ArrayList<Items> inventory, Weapons weapon, Clothings clothing) {
+        super(name, strength, vitality, intelligence, inventory, weapon, clothing);
     }
 }

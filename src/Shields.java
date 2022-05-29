@@ -4,8 +4,8 @@ public class Shields extends Weapons{
         super.type = "Shield";
     }
 
-    public Shields(String name, double weight, int value, double damage, int star) {
-        super(name, weight, value,damage,star);
+    public Shields(String name, double weight, int value, double damage) {
+        super(name, weight, value,damage);
         super.type = "Shield";
     }
 

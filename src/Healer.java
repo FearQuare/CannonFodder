@@ -1,10 +1,10 @@
-public class Healer extends Character{
+import java.util.ArrayList;
 
+public class Healer extends Character{
     public Healer() {
     }
 
-    public Healer(String name, String gender, int vitality, int intelligence, int strength, Weapons weapon, Clothings clothing) {
-        super(name, gender, vitality, intelligence, strength, weapon, clothing);
+    public Healer(String name, int strength, int vitality, int intelligence, ArrayList<Items> inventory, Weapons weapon, Clothings clothing) {
+        super(name, strength, vitality, intelligence, inventory, weapon, clothing);
     }
-
 }

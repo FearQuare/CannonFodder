@@ -52,13 +52,19 @@ public class Character {
         return totalWeight;
     }
 
+    public void printInventory(){
+        for(int i = 0; i < inventory.size(); i++){
+            System.out.println((i+1) + " | " + inventory.get(i).getName() + " weight | " + inventory.get(i).getWeight());
+        }
+    }
+
     public void addInventory(Items item){ //!!Later on, you might need to add return statements to add the item on the levels inventory
 
         double totalWeight = calculateTotalWeight();
 
         //If the item is clothing
-        if(item.category.equals("Clothing")){
-            if((totalWeight + item.weight)<=strength){ //And strength is greater than total weight + item's weight
+        if(item.getCategory().equals("Clothing")){
+            if((totalWeight + item.getWeight())<=strength){ //And strength is greater than total weight + item's weight
                 inventoryC.add(item);
                 updateInventory();
 
@@ -126,9 +132,7 @@ public class Character {
     public Items dropInventory(){
         //Listing all items in the inventory.
         System.out.println("You have those items in your inventory: ");
-        for (int i = 0; i < inventory.size(); i++){
-            System.out.println((i+1) + ": " + inventory.get(i).name + "| Weight: " + inventory.get(i).weight);
-        }
+        printInventory();
 
         //Choosing which one to drop.
         System.out.println("Which one would you like to drop? Enter the number: ");
@@ -137,8 +141,8 @@ public class Character {
         sc.nextLine();
 
         //Dropping functions.
-        if(inventory.get(drop).category.equals("Clothing")){
-            System.out.println(inventory.get(drop).name + " has been removed.");
+        if(inventory.get(drop).getCategory().equals("Clothing")){
+            System.out.println(inventory.get(drop).getName() + " has been removed.");
             int counter = 0;
             while(counter < inventoryC.size()){
                 if(inventoryC.get(counter) == inventory.get(drop)){
@@ -152,8 +156,8 @@ public class Character {
             updateInventory();
             return temp;
         }
-        else if(inventory.get(drop).category.equals("Weapon")){
-            System.out.println(inventory.get(drop).name + " has been removed.");
+        else if(inventory.get(drop).getCategory().equals("Weapon")){
+            System.out.println(inventory.get(drop).getName() + " has been removed.");
             int counter = 0;
             while(counter < inventoryW.size()){
                 if(inventoryW.get(counter) == inventory.get(drop)){

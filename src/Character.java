@@ -62,8 +62,7 @@ public class Character {
 
         double totalWeight = calculateTotalWeight();
 
-        if(int i)
-        /*//If the item is clothing
+        //If the item is clothing
         if(item.getCategory().equals("Clothing")){
             if((totalWeight + item.getWeight())<=strength){ //And strength is greater than total weight + item's weight
                 inventoryC.add(item);
@@ -88,12 +87,13 @@ public class Character {
                             System.out.println("Enter a valid input next time.");
                             break;
                     }
-                    if(strength >= totalWeight + item.weight){
+                    if(strength >= totalWeight + item.getWeight()){
                         flag = false;
                     }
                 }
-                if(strength>= totalWeight + item.weight){
+                if(strength>= totalWeight + item.getWeight()){
                     inventoryC.add(item);
+                    updateInventory();
                 }
             }
         }else if(item.category.equals("Weapon")){ //If the item is a weapon
@@ -119,15 +119,16 @@ public class Character {
                             System.out.println("Enter a valid input next time.");
                             break;
                     }
-                    if(strength >= totalWeight + item.weight){
+                    if(strength >= totalWeight + item.getWeight()){
                         flag1 = false;
                     }
                 }
-                if(strength>= totalWeight + item.weight){
+                if(strength>= totalWeight + item.getWeight()){
                     inventoryW.add(item);
+                    updateInventory();
                 }
             }
-        }*/
+        }
     }
 
     public Items dropInventory(){

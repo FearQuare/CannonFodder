@@ -16,6 +16,30 @@ public class Character {
     protected Clothings wieldedClothing;
     private final Scanner sc = new Scanner(System.in);
 
+    public Character(String name, int strength, int vitality, int intelligence, Weapons wieldedWeapon, Clothings wieldedClothing) {
+        this.name = name;
+        this.strength = strength;
+        this.vitality = vitality;
+        this.intelligence = intelligence;
+        this.wieldedWeapon = wieldedWeapon;
+        this.wieldedClothing = wieldedClothing;
+        this.inventoryW = new ArrayList<>();
+        this.inventoryC = new ArrayList<>();
+        this.inventory = new ArrayList<>();
+    }
+
+    public Character() {
+        this.name = "Unknown";
+        this.strength = 0;
+        this.vitality = 0;
+        this.intelligence = 0;
+        this.wieldedWeapon = new Weapons();
+        this.wieldedClothing = new Clothings();
+        this.inventoryW = new ArrayList<>();
+        this.inventoryC = new ArrayList<>();
+        this.inventory = new ArrayList<>();
+    }
+
     //Damage calculating function. Also, can be used to give damage.
     public double damage(){
 
@@ -252,5 +276,77 @@ public class Character {
                 System.out.println("Please enter a valid integer next time.");
                 break;
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getVitality() {
+        return vitality;
+    }
+
+    public void setVitality(int vitality) {
+        this.vitality = vitality;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public ArrayList<Items> getInventoryW() {
+        return inventoryW;
+    }
+
+    public void setInventoryW(ArrayList<Items> inventoryW) {
+        this.inventoryW = inventoryW;
+    }
+
+    public ArrayList<Items> getInventoryC() {
+        return inventoryC;
+    }
+
+    public void setInventoryC(ArrayList<Items> inventoryC) {
+        this.inventoryC = inventoryC;
+    }
+
+    public ArrayList<Items> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(ArrayList<Items> inventory) {
+        this.inventory = inventory;
+    }
+
+    public Weapons getWieldedWeapon() {
+        return wieldedWeapon;
+    }
+
+    public void setWieldedWeapon(Weapons wieldedWeapon) {
+        this.wieldedWeapon = wieldedWeapon;
+    }
+
+    public Clothings getWieldedClothing() {
+        return wieldedClothing;
+    }
+
+    public void setWieldedClothing(Clothings wieldedClothing) {
+        this.wieldedClothing = wieldedClothing;
     }
 }

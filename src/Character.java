@@ -62,7 +62,8 @@ public class Character {
 
         double totalWeight = calculateTotalWeight();
 
-        //If the item is clothing
+        if(int i)
+        /*//If the item is clothing
         if(item.getCategory().equals("Clothing")){
             if((totalWeight + item.getWeight())<=strength){ //And strength is greater than total weight + item's weight
                 inventoryC.add(item);
@@ -126,7 +127,7 @@ public class Character {
                     inventoryW.add(item);
                 }
             }
-        }
+        }*/
     }
 
     public Items dropInventory(){

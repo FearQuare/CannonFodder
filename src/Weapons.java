@@ -4,11 +4,13 @@ public class Weapons extends Items{
 
     public Weapons() {
         this.damage = 0.0;
+        this.category = "Weapon";
     }
 
     public Weapons(String name, double weight, int value, double damage) {
         super(name, weight, value);
         this.damage = damage;
+        this.category = "Weapon";
     }
 
     public double getDamage() {

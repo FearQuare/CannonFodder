@@ -11,8 +11,7 @@ public class Shields extends Weapons{
         this.category = "Weapon";
     }
 
-    public int stun(){
-        //This will stun the enemy for one turn.
-        return 0;
+    public long stun(Character character, EnemySoldier enemy){
+        return Math.round(character.damage()/enemy.getVitality());
     }
 }

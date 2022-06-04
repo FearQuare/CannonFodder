@@ -11,10 +11,8 @@ public class Swords extends Weapons{
         this.category = "Weapon";
     }
 
-    public int keepAway(){
-        //This make enemies away
-        int x = 1;
-        return x;
+    public long stayAway(Character character){
+        return Math.round(character.getHP()/character.getStrength());
     }
 
     public void block(){

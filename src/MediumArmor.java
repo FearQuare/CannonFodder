@@ -3,8 +3,8 @@ public class MediumArmor extends Clothings{
         this.category = "Clothing";
     }
 
-    public MediumArmor(String name, double weight, int value) {
-        super(name, weight, value);
+    public MediumArmor(String name, double weight, int value, double protection) {
+        super(name, weight, value, protection);
         this.category = "Clothing";
     }
 }

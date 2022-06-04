@@ -3,8 +3,8 @@ public class LightArmor extends Clothings{
         this.category = "Clothing";
     }
 
-    public LightArmor(String name, double weight, int value) {
-        super(name, weight, value);
+    public LightArmor(String name, double weight, int value, double protection) {
+        super(name, weight, value, protection);
         this.category = "Clothing";
     }
 }

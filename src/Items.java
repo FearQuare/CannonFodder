@@ -14,6 +14,13 @@ public class Items {
         this.value = value;
     }
 
+    public void printInfo(){
+        System.out.println("Category: " + getCategory());
+        System.out.println("Name: " + getName());
+        System.out.println("Weight: " + getWeight());
+        System.out.println("Value: " + getValue());
+    }
+
     public String getName() {
         return name;
     }

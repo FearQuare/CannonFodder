@@ -36,7 +36,49 @@ public abstract class Character {
         this.inventoryC = new ArrayList<>();
         this.inventory = new ArrayList<>();
         setHP();
+        this.HP = getHP();
     }
+
+    //Print character information
+    public void printInfo(Character character){
+        System.out.println("Name: " + character.getName());
+        System.out.println("Strength: " + character.getStrength());
+        System.out.println("Vitality: " + character.getVitality());
+        System.out.println("Intelligence: " + character.getIntelligence());
+        System.out.println(" ");
+        getWieldedWeapon().printInfo();
+        System.out.println(" ");
+        getWieldedClothing().printInfo();
+        System.out.println(" ");
+        System.out.println("Clothing inventory: ");
+        int count = 0;
+        for(int i = 0; i < inventoryC.size(); i++){
+            inventoryC.get(i).printInfo();
+            System.out.println(" ");
+            count++;
+        }
+        if(count == 0){
+            System.out.println("Inventory is empty.");
+        }
+        System.out.println(" ");
+
+
+        System.out.println("Weapon inventory: ");
+        int count1 = 0;
+        for(int i = 0; i < inventoryW.size(); i++){
+            inventoryW.get(i).printInfo();
+            System.out.println(" ");
+            count1 ++;
+        }
+        if(count1 == 0){
+            System.out.println("Inventory is empty.");
+        }
+        System.out.println(" ");
+        System.out.println("HP: " + getHP());
+        System.out.println("***********************");
+        System.out.println(" ");
+    }
+
 
     //Damage calculating function. Also, can be used to give damage.
     public double damage(){

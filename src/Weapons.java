@@ -13,6 +13,12 @@ public class Weapons extends Items{
         this.category = "Weapon";
     }
 
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.println("Damage: " + getDamage());
+    }
+
     public double getDamage() {
         return damage;
     }

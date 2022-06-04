@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.sql.Wrapper;
 
 public class Game {
 
@@ -8,18 +9,27 @@ public class Game {
 
     public static void main(String[] args) {
         //Setting up the characters
-        Character healer = new Healer();
-        healer.name = "Luna";
-        Character tank = new Tank();
-        tank.name = "Doomsday";
-        Character fighter = new Fighter();
-        fighter.name = "Fear";
+
+        //Healer
+        Weapons wand = new Weapons("Acaica", 1,2,3);
+        Clothings armor = new LightArmor("Alchemy Mail", 1,2,1);
+        Character healer = new Healer("Luna", wand, armor);
+
+        //Tank
+        Weapons shield = new Shields("Pikyu Pikyu", 2,1,3);
+        Clothings armor1 = new HardArmor("Chestplate of Ending Wars",1,2,3);
+        Character tank = new Tank("Doomsday", shield, armor1);
+
+        //Fighter
+        Weapons sword = new Swords("Diamond Pickaxe", 2,2, 3);
+        Clothings armor2 = new MediumArmor("Whisper of Huntsman", 2,2,2);
+        Character fighter = new Fighter("Fear", sword, armor2);
 
         //Display screen for the player and a description of the games purpose
-        System.out.println("Welcome to Cannon Fodder traveler! Another mysterious and yet dangerous adventure you are heading in! You have three characters:\n" +
-                "The healer: " + healer.name + "\n" +
-                "The tank: " + tank.name + "\n" +
-                "The fighter: " + fighter.name);
+        System.out.println("Welcome to Cannon Fodder traveler! Another mysterious and yet dangerous adventure you are heading in! You have three characters:");
+        healer.printInfo(healer);
+        tank.printInfo(tank);
+        fighter.printInfo(fighter);
         System.out.println("Each of them are significantly powerful and precious characters and among your journey, you need to keep them alive and clear all the levels of dungeons.");
         System.out.println("In each level, the amount of the enemy you need to fought with will increase 2 times.");
 

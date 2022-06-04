@@ -1,25 +1,23 @@
-import java.util.ArrayList;
 import java.util.Random;
 
-public class Healer extends Character{
-
+public class EnemySoldier extends Character{
     private static Random rand = new Random();
-    public Healer(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
+    public EnemySoldier(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
         super(name, wieldedWeapon, wieldedClothing);
-        setIntelligence();
         setStrength();
+        setIntelligence();
         setVitality();
+        super.vitality = getVitality();
         super.intelligence = getIntelligence();
         super.strength = getStrength();
-        super.vitality = getVitality();
     }
 
-    public Healer() {
+    public EnemySoldier() {
     }
 
     @Override
     public void setStrength() {
-        super.strength = rand.nextInt(3,7);
+        super.strength = rand.nextInt(1,5);
     }
 
     @Override
@@ -29,6 +27,6 @@ public class Healer extends Character{
 
     @Override
     public void setIntelligence() {
-        super.intelligence = rand.nextInt(6,10);
+        super.intelligence = rand.nextInt(1,5);
     }
 }

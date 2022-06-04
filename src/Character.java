@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//The character will have HP
 public abstract class Character {
 
     //Instance variables.
@@ -17,11 +16,8 @@ public abstract class Character {
     protected long HP;
     private final Scanner sc = new Scanner(System.in);
 
-    public Character(String name, int strength, int vitality, int intelligence, Weapons wieldedWeapon, Clothings wieldedClothing) {
+    public Character(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
         this.name = name;
-        this.strength = strength;
-        this.vitality = vitality;
-        this.intelligence = intelligence;
         this.wieldedWeapon = wieldedWeapon;
         this.wieldedClothing = wieldedClothing;
         this.inventoryW = new ArrayList<>();
@@ -293,25 +289,19 @@ public abstract class Character {
         return strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
+    public abstract void setStrength();
 
     public int getVitality() {
         return vitality;
     }
 
-    public void setVitality(int vitality) {
-        this.vitality = vitality;
-    }
+    public abstract void setVitality();
 
     public int getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
+    public abstract void setIntelligence();
 
     public ArrayList<Items> getInventoryW() {
         return inventoryW;

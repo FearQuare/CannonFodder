@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class EnemySoldier extends Character{
@@ -10,9 +11,25 @@ public class EnemySoldier extends Character{
         super.vitality = getVitality();
         super.intelligence = getIntelligence();
         super.strength = getStrength();
+        setHP();
+        super.HP = getHP();
     }
 
     public EnemySoldier() {
+        super.name = "Unknown";
+        setStrength();
+        super.strength = getStrength();
+        setIntelligence();
+        super.intelligence = getIntelligence();
+        setVitality();
+        super.vitality = getVitality();
+        setHP();
+        super.HP = getHP();
+        super.wieldedWeapon = new Weapons();
+        super.wieldedClothing = new Clothings();
+        super.inventoryC = new ArrayList<>();
+        super.inventoryW = new ArrayList<>();
+        super.inventory = new ArrayList<>();
     }
 
     @Override

@@ -11,9 +11,25 @@ public class Tank extends Character{
         super.intelligence = getIntelligence();
         super.vitality = getVitality();
         super.strength = getStrength();
+        setHP();
+        super.HP = getHP();
     }
 
     public Tank() {
+        super.name = "Unknown";
+        setStrength();
+        super.strength = getStrength();
+        setIntelligence();
+        super.intelligence = getIntelligence();
+        setVitality();
+        super.vitality = getVitality();
+        setHP();
+        super.HP = getHP();
+        super.wieldedWeapon = new Weapons();
+        super.wieldedClothing = new Clothings();
+        super.inventoryC = new ArrayList<>();
+        super.inventoryW = new ArrayList<>();
+        super.inventory = new ArrayList<>();
     }
 
     @Override

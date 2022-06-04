@@ -23,7 +23,6 @@ public abstract class Character {
         this.inventoryW = new ArrayList<>();
         this.inventoryC = new ArrayList<>();
         this.inventory = new ArrayList<>();
-        setHP();
     }
 
     public Character() {

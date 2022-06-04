@@ -1,11 +1,13 @@
 import java.lang.Math;
 import java.sql.Wrapper;
+import java.util.ArrayList;
 
 public class Game {
 
     private static int level = 0; //Level starts with zero and with 1 enemy
     private static double enemyAmount = 1; // Enemy amount is 1
     private static int turn = 0; //Turns are counted beginning with a zero
+    private ArrayList<EnemySoldier> enemies;
 
     public static void main(String[] args) {
         //Setting up the characters

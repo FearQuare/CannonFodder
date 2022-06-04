@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 //The character will have HP
-public class Character {
+public abstract class Character {
 
     //Instance variables.
     protected String name;

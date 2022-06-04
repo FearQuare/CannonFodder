@@ -14,6 +14,7 @@ public abstract class Character {
     protected ArrayList<Items> inventory; //If we want to manipulate the inventory regardless their category.
     protected Weapons wieldedWeapon;
     protected Clothings wieldedClothing;
+    protected long HP;
     private final Scanner sc = new Scanner(System.in);
 
     public Character(String name, int strength, int vitality, int intelligence, Weapons wieldedWeapon, Clothings wieldedClothing) {
@@ -26,6 +27,7 @@ public abstract class Character {
         this.inventoryW = new ArrayList<>();
         this.inventoryC = new ArrayList<>();
         this.inventory = new ArrayList<>();
+        setHP();
     }
 
     public Character() {
@@ -38,6 +40,7 @@ public abstract class Character {
         this.inventoryW = new ArrayList<>();
         this.inventoryC = new ArrayList<>();
         this.inventory = new ArrayList<>();
+        setHP();
     }
 
     //Damage calculating function. Also, can be used to give damage.
@@ -348,5 +351,13 @@ public abstract class Character {
 
     public void setWieldedClothing(Clothings wieldedClothing) {
         this.wieldedClothing = wieldedClothing;
+    }
+
+    public long getHP() {
+        return HP;
+    }
+
+    public void setHP() {
+        this.HP = Math.round(0.7*vitality + 0.2*strength + 0.1*intelligence);
     }
 }

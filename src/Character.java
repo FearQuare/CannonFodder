@@ -14,6 +14,7 @@ public abstract class Character {
     protected Weapons wieldedWeapon;
     protected Clothings wieldedClothing;
     protected long HP;
+    protected int stayAway;
     private final Scanner sc = new Scanner(System.in);
 
     public Character(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
@@ -390,5 +391,13 @@ public abstract class Character {
 
     public void setHP() {
         this.HP = Math.round(0.7*vitality + 0.2*strength + 0.1*intelligence);
+    }
+
+    public int getStayAway() {
+        return stayAway;
+    }
+
+    public void setStayAway(int stayAway) {
+        this.stayAway = stayAway;
     }
 }

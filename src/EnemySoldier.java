@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EnemySoldier extends Character{
+
+    private int stunCount;
     private static Random rand = new Random();
     public EnemySoldier(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
         super(name, wieldedWeapon, wieldedClothing);
@@ -30,6 +32,14 @@ public class EnemySoldier extends Character{
         super.inventoryC = new ArrayList<>();
         super.inventoryW = new ArrayList<>();
         super.inventory = new ArrayList<>();
+    }
+
+    public int getStunCount() {
+        return stunCount;
+    }
+
+    public void setStunCount(int stunCount) {
+        this.stunCount = stunCount;
     }
 
     @Override

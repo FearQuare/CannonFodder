@@ -35,6 +35,14 @@ public class Game implements Level{
         fighter.printInfo(fighter);
         System.out.println("Each of them are significantly powerful and precious characters and among your journey, you need to keep them alive and clear all the levels of dungeons.");
         System.out.println("In each level, the amount of the enemy you need to fought with will increase 2 times.");
+        System.out.println("***************************");
+        System.out.println("The game starts now...");
+        boolean gameFlag = true;
+        while(gameFlag){
+            System.out.println("You are at level " + level + ".");
+            System.out.println("There are " + enemyAmount + " enemies.");
+
+        }
 
     }
     public void setEnemy(){

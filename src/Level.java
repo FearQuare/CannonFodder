@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 
 interface Level {
-    public void increaseLevel();
-    public static int turnCountChar(){
+    static void increaseLevel(int level, int enemyAmount){
+        //a method to increase level, we implemented this metod for the readibility purposes.
+        level ++;
+        enemyAmount = Math.pow(2, level);
+    }
+    static int turnCountChar(){
         int turn = 0;
         if(turn<2){
             turn ++;
@@ -12,7 +16,7 @@ interface Level {
             return turn;
         }
     }
-    public static int turnCountEnemy(int turnEn, ArrayList<EnemySoldier> enemies){
+    static int turnCountEnemy(int turnEn, ArrayList<EnemySoldier> enemies){
         int turn = 0;
         if(turn<enemies.size()){
             turn++;
@@ -22,14 +26,14 @@ interface Level {
             return turn;
         }
     }
-    public void setEnemy();
-    public Weapons dropWeapon();
-    public void attack();
-    public void specialAction();
-    public void pick();
-    public void wield();
-    public void wear();
-    public void examine();
-    public void listInventory();
+    void setEnemy();
+    Weapons dropWeapon();
+    void attack();
+    void specialAction();
+    void pick();
+    void wield();
+    void wear();
+    void examine();
+    void listInventory();
 
 }

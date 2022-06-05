@@ -1,13 +1,14 @@
 import java.lang.Math;
 import java.sql.Wrapper;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
-
     private static int level = 0; //Level starts with zero and with 1 enemy
     private static double enemyAmount = 1; // Enemy amount is 1
     private static int turn = 0; //Turns are counted beginning with a zero
     private ArrayList<EnemySoldier> enemies;
+    private static Random rand = new Random();
 
     public static void main(String[] args) {
         //Setting up the characters
@@ -52,4 +53,42 @@ public class Game {
         return turn;
     }
 
+    public void setEnemy(){
+        //Name initialization elements.
+        ArrayList<String> names = new ArrayList<>();
+        String name = "Enemy ";
+
+        //Attributes of enemies
+        Weapons sword = new Swords("sword", 1,1,3);
+        Weapons wand = new Wands("Wand", 1,1,1);
+        Weapons shield = new Shields("Shield", 1,1,2);
+        Clothings lightArmor = new LightArmor("armor", 1,1,2);
+
+        //Name initialization loop
+        for(int i = 0; i < names.size(); i++){
+            name = name + (i+1);
+            names.add(name);
+        }
+
+        //Enemy initialization
+        for(int i = 0; i < enemyAmount; i++){
+            int a = rand.nextInt(1,10);
+            if(a<8 && a>0){
+                EnemySoldier enemy = new EnemySoldier(names.get(i), sword, lightArmor);
+                enemies.add(enemy);
+            }else if(a>8 && a<10){
+                EnemySoldier enemy = new EnemySoldier(names.get(i), wand, lightArmor);
+                enemies.add(enemy);
+            }else{
+                EnemySoldier enemy = new EnemySoldier(names.get(i), shield, lightArmor);
+                enemies.add(enemy);
+            }
+        }
+    }
+
+    public Weapons dropWeapon(){
+        Weapons[] drop = new Weapons[10];
+        int index  = rand.nextInt(0,9);
+        return drop[index];
+    }
 }

@@ -8,6 +8,7 @@ public class Game {
     private static double enemyAmount = 1; // Enemy amount is 1
     private static int turn = 0; //Turns are counted beginning with a zero
     private ArrayList<EnemySoldier> enemies;
+    private ArrayList<Items> levelItems;
     private static Random rand = new Random();
 
     public static void main(String[] args) {

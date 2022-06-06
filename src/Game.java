@@ -3,16 +3,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game{
-    private static int level = 0; //Level starts with zero and with 1 enemy
-    private static double enemyAmount = 1; // Enemy amount is 1
-    private static int turn = 0; //Turns are counted beginning with a zero
-    private ArrayList<EnemySoldier> enemies;
-    private ArrayList<Items> levelItems;
     private static Random rand = new Random();
 
     public static void main(String[] args) {
-        //Setting up the characters
+        int enemyAmount = 1; //Initialized enemy amount
+        int level = 0; //Initialized level
+        int turn = 0; //Turn count from the start
 
+        //ArrayLists we'll use later
+        ArrayList<EnemySoldier> enemies = new ArrayList<>();
+        ArrayList<Items> levelItems = new ArrayList<>();
+        ArrayList<Character> myCharacters = new ArrayList<>();
+
+        //Setting up the characters
         //Healer
         Weapons wand = new Weapons("Acaica", 1,2,3);
         Clothings armor = new LightArmor("Alchemy Mail", 1,2,1);
@@ -28,6 +31,11 @@ public class Game{
         Clothings armor2 = new MediumArmor("Whisper of Huntsman", 2,2,2);
         Character fighter = new Fighter("Fear", sword, armor2);
 
+        //Arraylist of our characters:
+        myCharacters.add(healer);
+        myCharacters.add(tank);
+        myCharacters.add(fighter);
+
         //Display screen for the player and a description of the games purpose
         System.out.println("Welcome to Cannon Fodder traveler! Another mysterious and yet dangerous adventure you are heading in! You have three characters:");
         healer.printInfo(healer);
@@ -37,41 +45,46 @@ public class Game{
         System.out.println("In each level, the amount of the enemy you need to fought with will increase 2 times.");
         System.out.println("***************************");
         System.out.println("The game starts now...");
+
         boolean gameFlag = true;
         while(gameFlag){
-            System.out.println("You are at level " + level + ".");
-            System.out.println("There are " + enemyAmount + " enemies.");
+            if(!myCharacters.isEmpty()){
+                System.out.println("You are at level " + level + ".");
+                System.out.println("There are " + enemyAmount + " enemies.");
+                setEnemy(enemyAmount, enemies);
+                if(enemies.size() > 0){
+
+                }
+            }else{
+                System.out.println("Wasted. Try your best next time.");
+                gameFlag = false;
+            }
+
+            level ++;
+            enemyAmount = (int) Math.pow(2,level);
         }
 
     }
-    public void setEnemy(){
-        //Name initialization elements.
-        ArrayList<String> names = new ArrayList<>();
-        String name = "Enemy ";
-
+    public static void setEnemy(int enemyAmount, ArrayList<EnemySoldier> enemies){
         //Attributes of enemies
         Weapons sword = new Swords("sword", 1,1,3);
         Weapons wand = new Wands("Wand", 1,1,1);
         Weapons shield = new Shields("Shield", 1,1,2);
         Clothings lightArmor = new LightArmor("armor", 1,1,2);
 
-        //Name initialization loop
-        for(int i = 0; i < names.size(); i++){
-            name = name + (i+1);
-            names.add(name);
-        }
-
         //Enemy initialization
         for(int i = 0; i < enemyAmount; i++){
+            String name = "Enemy ";
+            name = name + (i+1);
             int a = rand.nextInt(1,10);
-            if(a<8 && a>0){
-                EnemySoldier enemy = new EnemySoldier(names.get(i), sword, lightArmor);
+            if(a<=8 && a>0){
+                EnemySoldier enemy = new EnemySoldier(name, sword, lightArmor);
                 enemies.add(enemy);
-            }else if(a>8 && a<10){
-                EnemySoldier enemy = new EnemySoldier(names.get(i), wand, lightArmor);
+            }else if(a==9){
+                EnemySoldier enemy = new EnemySoldier(name, wand, lightArmor);
                 enemies.add(enemy);
             }else{
-                EnemySoldier enemy = new EnemySoldier(names.get(i), shield, lightArmor);
+                EnemySoldier enemy = new EnemySoldier(name, shield, lightArmor);
                 enemies.add(enemy);
             }
         }
@@ -101,12 +114,7 @@ public class Game{
         int index  = rand.nextInt(0,9);
         return drop[index];
     }
-    public static void increaseLevel(){
-        //a method to increase level, we implemented this metod for the readibility purposes.
-        level ++;
-        enemyAmount = (int) Math.pow(2, level);
-    }
-    public int turnCountEnemy(){
+    public int turnCountEnemy(ArrayList<EnemySoldier> enemies){
         int turn = 0;
         if(turn<enemies.size()){
             turn++;

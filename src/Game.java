@@ -1,16 +1,21 @@
 import java.lang.Math;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
-    private static int level = 0; //Level starts with zero and with 1 enemy
-    private static double enemyAmount = 1; // Enemy amount is 1
-    private static int turn = 0; //Turns are counted beginning with a zero
-    private ArrayList<EnemySoldier> enemies;
-    private ArrayList<Items> levelItems;
     private static Random rand = new Random();
+    private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        int level = 0;
+        int enemyAmount = 1;
+        int turn = 0;
+        ArrayList<EnemySoldier> enemies = new ArrayList<>();
+        ArrayList<Items> levelItems = new ArrayList<>();
+        ArrayList<Character> myCharacters = new ArrayList<>();
+
         //Setting up the characters
 
         //Healer
@@ -36,51 +41,73 @@ public class Game {
         System.out.println("Each of them are significantly powerful and precious characters and among your journey, you need to keep them alive and clear all the levels of dungeons.");
         System.out.println("In each level, the amount of the enemy you need to fought with will increase 2 times.");
 
-    }
-    //Level increasing function
-    public static void increaseLevel(){
-        //a method to increase level, we implemented this metod for the readibility purposes.
-        level ++;
-        enemyAmount = Math.pow(2, level);
-    }
-    //Turn counter, because there are 3 characters there will be 3 turns.
-    public static int turnCount(int turn){
-        if(turn<2){
-            turn ++;
-        }else {
-            turn = 0;
+        //Game begins
+        Boolean gameFlag = true;
+        while(gameFlag){
+            if(!(myCharacters.size()<=0)){
+                //Level introduction:
+                System.out.println("You are at level " + level);
+                System.out.println("There are " + enemyAmount + " enemies and the attributes of them are: ");
+                for(int i = 0; i < enemies.size(); i++){
+                    System.out.println("Name: " + enemies.get(i).getName() +"\nHP: " + enemies.get(i).getHP());
+                }
+                //Actions of the characters
+                int i = 0;
+                while(i < 3){
+                    System.out.println("With which character you want to make a move? Please type their names: ");
+                    String charName = sc.nextLine();
+                    charName = charName.toLowerCase();
+                    switch (charName){
+                        case "luna":
+                            int index = 0;
+                            for(int j = 0; j < myCharacters.size(); j++){
+                                if(myCharacters.get(j).getName().equals("Luna")){
+                                    index = j;
+                                }
+                            }
+                            System.out.println("Which move you want to do?");
+                            System.out.println("To attack type attack.");
+                            System.out.println("To make a special action type special action.");
+                            System.out.println("To check if there are any items on the ground type check.");
+                            System.out.println("To check your inventory type inventory.");
+                            System.out.println("To wield a weapon in your inventory type wield.");
+                            System.out.println("To wear an item in your inventory type wear.");
+                            break;
+                        case "doomsday":
+                            break;
+                        case "fear":
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }else{
+                gameFlag = false;
+            }
+            level ++;
+            enemyAmount = (int)Math.pow(2, level);
         }
-        return turn;
     }
 
-    public void setEnemy(){
-        //Name initialization elements.
-        ArrayList<String> names = new ArrayList<>();
-        String name = "Enemy ";
-
+    public void setEnemy(int enemyAmount, ArrayList<EnemySoldier> enemies){
         //Attributes of enemies
         Weapons sword = new Swords("sword", 1,1,3);
         Weapons wand = new Wands("Wand", 1,1,1);
         Weapons shield = new Shields("Shield", 1,1,2);
         Clothings lightArmor = new LightArmor("armor", 1,1,2);
 
-        //Name initialization loop
-        for(int i = 0; i < names.size(); i++){
-            name = name + (i+1);
-            names.add(name);
-        }
-
         //Enemy initialization
         for(int i = 0; i < enemyAmount; i++){
+            String name = "Enemy " + (i+1);
             int a = rand.nextInt(1,10);
             if(a<8 && a>0){
-                EnemySoldier enemy = new EnemySoldier(names.get(i), sword, lightArmor);
+                EnemySoldier enemy = new EnemySoldier(name, sword, lightArmor);
                 enemies.add(enemy);
             }else if(a>8 && a<10){
-                EnemySoldier enemy = new EnemySoldier(names.get(i), wand, lightArmor);
+                EnemySoldier enemy = new EnemySoldier(name, wand, lightArmor);
                 enemies.add(enemy);
             }else{
-                EnemySoldier enemy = new EnemySoldier(names.get(i), shield, lightArmor);
+                EnemySoldier enemy = new EnemySoldier(name, shield, lightArmor);
                 enemies.add(enemy);
             }
         }

@@ -2,7 +2,7 @@ import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game implements Level{
+public class Game{
     private static int level = 0; //Level starts with zero and with 1 enemy
     private static double enemyAmount = 1; // Enemy amount is 1
     private static int turn = 0; //Turns are counted beginning with a zero
@@ -41,7 +41,6 @@ public class Game implements Level{
         while(gameFlag){
             System.out.println("You are at level " + level + ".");
             System.out.println("There are " + enemyAmount + " enemies.");
-
         }
 
     }
@@ -102,39 +101,19 @@ public class Game implements Level{
         int index  = rand.nextInt(0,9);
         return drop[index];
     }
-
-    @Override
-    public void attack() {
-
+    public static void increaseLevel(){
+        //a method to increase level, we implemented this metod for the readibility purposes.
+        level ++;
+        enemyAmount = (int) Math.pow(2, level);
     }
-
-    @Override
-    public void specialAction() {
-
-    }
-
-    @Override
-    public void pick() {
-
-    }
-
-    @Override
-    public void wield() {
-
-    }
-
-    @Override
-    public void wear() {
-
-    }
-
-    @Override
-    public void examine() {
-
-    }
-
-    @Override
-    public void listInventory() {
-
+    public int turnCountEnemy(){
+        int turn = 0;
+        if(turn<enemies.size()){
+            turn++;
+            return turn;
+        }else{
+            turn = 0;
+            return turn;
+        }
     }
 }

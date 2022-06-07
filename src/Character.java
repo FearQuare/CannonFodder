@@ -31,7 +31,8 @@ public abstract class Character implements ICharacterMethods{
         this.strength = 0;
         this.vitality = 0;
         this.intelligence = 0;
-        this.wieldedWeapon = new Weapons();
+        Weapons defaultWeapon = new Swords("default", 1,1,1);
+        this.wieldedWeapon = defaultWeapon;
         this.wieldedClothing = new Clothings();
         this.inventoryW = new ArrayList<>();
         this.inventoryC = new ArrayList<>();
@@ -83,14 +84,17 @@ public abstract class Character implements ICharacterMethods{
 
     //Damage calculating function. Also, can be used to give damage.
     public double damage(){
-
-        return switch (wieldedWeapon.type) {
-            case "Sword" -> wieldedWeapon.damage * strength;
-            case "Wand" -> wieldedWeapon.damage * intelligence;
-            case "Shield" -> wieldedWeapon.damage * vitality;
-            default -> strength;
-        };
-
+        if(getWieldedWeapon() != null){
+            if(getWieldedWeapon().getType().equals("Sword")){
+                return getWieldedWeapon().getDamage()*getStrength();
+            }else if(getWieldedWeapon().getType().equals("Wand")){
+                return getWieldedWeapon().getDamage()*getIntelligence();
+            }else{
+                return getWieldedWeapon().getDamage()*getVitality();
+            }
+        } else {
+            return getStrength();
+        }
     }
 
     //update the inventory via inventoryC + inventoryW
@@ -319,6 +323,14 @@ public abstract class Character implements ICharacterMethods{
         }
     }
 
+    public void updateHP(int choice, double application){
+        if(choice == 1){
+            this.HP = (int) (this.HP - application);
+        }else{
+            this.HP = (int) (this.HP + application);
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -391,9 +403,6 @@ public abstract class Character implements ICharacterMethods{
 
     public void setHP() {
         this.HP = Math.round(0.7*vitality + 0.2*strength + 0.1*intelligence);
-    }
-    public void setHP(double HP){
-        this.HP = (long) HP;
     }
 
     public int getStayAway() {

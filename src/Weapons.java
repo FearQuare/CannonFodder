@@ -5,12 +5,14 @@ public class Weapons extends Items{
     public Weapons() {
         this.damage = 0.0;
         this.category = "Weapon";
+        this.type = "None";
     }
 
     public Weapons(String name, double weight, int value, double damage) {
         super(name, weight, value);
         this.damage = damage;
         this.category = "Weapon";
+        this.type = "None";
     }
 
     @Override

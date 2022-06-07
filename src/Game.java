@@ -33,6 +33,10 @@ public class Game {
         Clothings armor2 = new MediumArmor("Whisper of Huntsman", 2,2,2);
         Character fighter = new Fighter("Fear", sword, armor2);
 
+        myCharacters.add(healer);
+        myCharacters.add(tank);
+        myCharacters.add(fighter);
+
         //Display screen for the player and a description of the games purpose
         System.out.println("Welcome to Cannon Fodder traveler! Another mysterious and yet dangerous adventure you are heading in! You have three characters:");
         healer.printInfo(healer);
@@ -44,13 +48,16 @@ public class Game {
         //Game begins
         Boolean gameFlag = true;
         while(gameFlag){
-            if(!(myCharacters.size()<=0)){
+            if(myCharacters.size()>0){
                 //Level introduction:
+                System.out.println(" ");
                 System.out.println("You are at level " + level);
                 System.out.println("There are " + enemyAmount + " enemies and the attributes of them are: ");
+                setEnemy(enemyAmount,enemies);
                 for(int i = 0; i < enemies.size(); i++){
                     System.out.println("Name: " + enemies.get(i).getName() +"\nHP: " + enemies.get(i).getHP());
                 }
+                System.out.println(" ");
                 //Actions of the characters
                 int i = 0;
                 while(i < 3){
@@ -59,6 +66,7 @@ public class Game {
                     charName = charName.toLowerCase();
                     switch (charName){
                         case "luna":
+                            System.out.println("You are playing with Luna.");
                             int index = 0;
                             for(int j = 0; j < myCharacters.size(); j++){
                                 if(myCharacters.get(j).getName().equals("Luna")){
@@ -72,12 +80,34 @@ public class Game {
                             System.out.println("To check your inventory type inventory.");
                             System.out.println("To wield a weapon in your inventory type wield.");
                             System.out.println("To wear an item in your inventory type wear.");
+                            System.out.println("Type your answer: ");
+                            String choice = sc.nextLine();
+                            choice = choice.toLowerCase();
+                            switch(choice){
+                                case "attack":
+                                    break;
+                                case "special action":
+                                    break;
+                                case "check":
+                                    break;
+                                case "inventory":
+                                    break;
+                                case "wield":
+                                    break;
+                                case "wear":
+                                    break;
+                                default:
+                                    break;
+                            }
                             break;
                         case "doomsday":
+                            System.out.println("You are playing with Doomsday.");
                             break;
                         case "fear":
+                            System.out.println("You are playing with Fear.");
                             break;
                         default:
+                            System.out.println("Please try a valid input next time.");
                             break;
                     }
                 }
@@ -89,7 +119,7 @@ public class Game {
         }
     }
 
-    public void setEnemy(int enemyAmount, ArrayList<EnemySoldier> enemies){
+    public static void setEnemy(int enemyAmount, ArrayList<EnemySoldier> enemies){
         //Attributes of enemies
         Weapons sword = new Swords("sword", 1,1,3);
         Weapons wand = new Wands("Wand", 1,1,1);

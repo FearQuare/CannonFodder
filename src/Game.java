@@ -59,8 +59,9 @@ public class Game {
                 }
                 System.out.println(" ");
                 //Actions of the characters
-                int i = 0;
+                int i = 0; //If a character attacks or wield/wears an item than turn count increases one and when the turn count reaches 3(2) while loop will terminate
                 while(i < 3){
+                    //Inputting the desired character.
                     System.out.println("With which character you want to make a move? Please type their names: ");
                     String charName = sc.nextLine();
                     charName = charName.toLowerCase();
@@ -73,18 +74,38 @@ public class Game {
                                     index = j;
                                 }
                             }
+                            //Action list.
                             System.out.println("Which move you want to do?");
                             System.out.println("To attack type attack.");
                             System.out.println("To make a special action type special action.");
-                            System.out.println("To check if there are any items on the ground type check.");
+                            System.out.println("To check if there are any items on the ground type check."); //While checking, player will be asked if they want to examine it, take it or leave it.
                             System.out.println("To check your inventory type inventory.");
-                            System.out.println("To wield a weapon in your inventory type wield.");
-                            System.out.println("To wear an item in your inventory type wear.");
+                            System.out.println("To wield a weapon in your inventory type wield.");//If there is nothing to wield print the situation.
+                            System.out.println("To wear an item in your inventory type wear.");//Same as the above comment
                             System.out.println("Type your answer: ");
+                            //Choosing the action
                             String choice = sc.nextLine();
                             choice = choice.toLowerCase();
                             switch(choice){
                                 case "attack":
+                                    System.out.println("Which enemy you want to attack?");
+                                    //Enemy list
+                                    for(int b = 0; b < enemies.size(); b++){
+                                        System.out.println("Name: " + enemies.get(i).getName() +"\nHP: " + enemies.get(i).getHP());
+                                    }
+                                    //Inputting
+                                    System.out.println("Please type their name: ");
+                                    String enemyChoice = sc.nextLine();
+                                    enemyChoice = enemyChoice.toLowerCase();
+                                    //Searching the index of the desired enemy.
+                                    int index1 = 0;
+                                    for(int a = 0; a < enemies.size(); a++){
+                                        if(enemies.get(a).getName().toLowerCase().equals(enemyChoice)){
+                                            break;
+                                        }
+                                        index1++;
+                                    }
+
                                     break;
                                 case "special action":
                                     break;

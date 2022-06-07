@@ -105,7 +105,16 @@ public class Game {
                                         }
                                         index1++;
                                     }
-
+                                    double damage = healer.damage();
+                                    double newHP = enemies.get(index1).getHP() - damage;
+                                    enemies.get(index1).setHP(newHP);
+                                    System.out.println(enemies.get(index1) + " has " + enemies.get(index1).getHP() + " HP." );
+                                    if(enemies.get(index1).getHP()<=0){
+                                        System.out.println(enemies.get(index1).getName() + " is dead.");
+                                        enemies.remove(index1);
+                                    }
+                                    System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
+                                    i++;
                                     break;
                                 case "special action":
                                     break;

@@ -392,6 +392,9 @@ public abstract class Character implements ICharacterMethods{
     public void setHP() {
         this.HP = Math.round(0.7*vitality + 0.2*strength + 0.1*intelligence);
     }
+    public void setHP(double HP){
+        this.HP = (long) HP;
+    }
 
     public int getStayAway() {
         return stayAway;

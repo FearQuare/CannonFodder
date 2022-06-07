@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class Character {
+public abstract class Character implements ICharacterMethods{
 
     //Instance variables.
     protected String name;

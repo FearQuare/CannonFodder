@@ -82,8 +82,7 @@ public class Game {
                                     System.out.println("To make a special action type special action.");
                                     System.out.println("To check if there are any items on the ground type check."); //While checking, player will be asked if they want to examine it, take it or leave it.
                                     System.out.println("To check your inventory type inventory.");
-                                    System.out.println("To wield a weapon in your inventory type wield.");//If there is nothing to wield print the situation.
-                                    System.out.println("To wear an item in your inventory type wear.");//Same as the above comment
+                                    System.out.println("To wield a weapon in your inventory type wield and wear.");//If there is nothing to wield print the situation.
                                     System.out.println("Type your answer: ");
                                     //Choosing the action
                                     String choice = sc.nextLine();
@@ -146,20 +145,40 @@ public class Game {
                                             }else if(healer.getWieldedWeapon().getType().equals("Sword")){
                                                 System.out.println("You can either stay away or block an enemy for one turn.");
                                             }else if(healer.getWieldedWeapon().getType().equals("Shield")){
-
+                                                System.out.println("The special action of the shield is only activated if and only if when an enemy attacks.");
                                             }else{
                                                 System.out.println("Since Luna has no weapon, she has no special action too.");
                                             }
                                             break;
                                         case "check":
+                                            if(levelItems.isEmpty()){
+                                                System.out.println("Instantly there are no items on the ground in this level.");
+                                            }else{
+                                                System.out.println("There are: ");
+                                                for(int k = 0; k<levelItems.size(); k++){
+                                                    System.out.println("Item " + (k+1) + ":");
+                                                    levelItems.get(k).printInfo();
+                                                    System.out.println(" ");
+                                                }
+                                                System.out.println("Would you like to pick up an item?");
+                                                int itemIndex = sc.nextInt();
+                                                sc.nextLine();
+                                                itemIndex = itemIndex - 1;
+                                                healer.addInventory(levelItems.get(itemIndex));
+                                            }
                                             break;
                                         case "inventory":
+                                            if(healer.getInventory().isEmpty()){
+                                                System.out.println("The inventory is empty.");
+                                            }else{
+                                                healer.printInventory();
+                                            }
                                             break;
-                                        case "wield":
-                                            break;
-                                        case "wear":
+                                        case "wield and wear":
+                                            healer.switchWielded();
                                             break;
                                         default:
+                                            System.out.println("Please enter a valid input next time.");
                                             break;
                                     }
                                     break;

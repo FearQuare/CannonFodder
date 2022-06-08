@@ -15,4 +15,5 @@ public class Swords extends Weapons{
         return Math.round(character.getStrength()/5);
     }
 
+
 }

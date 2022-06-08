@@ -11,9 +11,8 @@ public class Wands extends Weapons{
         this.category = "Weapon";
     }
 
-    public double heal(){
-        //This method will heal characters.
-        return 0;
+    public double heal(Character character){
+        return character.getIntelligence()/2;
     }
 
 }

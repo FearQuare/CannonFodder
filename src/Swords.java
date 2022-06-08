@@ -12,11 +12,7 @@ public class Swords extends Weapons{
     }
 
     public long stayAway(Character character){
-        return Math.round(character.getHP()/character.getStrength());
-    }
-
-    public void block(){
-        //This can block an enemy but consumes your turns.
+        return Math.round(character.getStrength()/5);
     }
 
 }

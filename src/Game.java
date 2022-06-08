@@ -19,7 +19,7 @@ public class Game {
         //Setting up the characters
 
         //Healer
-        Weapons wand = new Weapons("Acaica", 1,2,3);
+        Weapons wand = new Wands("Acaica", 1,2,3);
         Clothings armor = new LightArmor("Alchemy Mail", 1,2,1);
         Character healer = new Healer("Luna", wand, armor);
 
@@ -122,20 +122,33 @@ public class Game {
                                             i++;
                                             break;
                                         case "special action":
-                                            switch(healer.getWieldedWeapon().getType()){
-                                                case "Wand":
-                                                    System.out.println("Which character you want to heal?");
-                                                    for(int c = 0; c < myCharacters.size(); c++){
-                                                        System.out.println(myCharacters.get(c).getName() + " has " + myCharacters.get(c).getHP());
+                                            if(healer.getWieldedWeapon().getType().equals("Wand")){
+                                                System.out.println("Which character you want to heal?");
+                                                for(int c = 0; c < myCharacters.size(); c++){
+                                                    System.out.println(myCharacters.get(c).getName() + " has " + myCharacters.get(c).getHP());
+                                                }
+                                                String input = sc.nextLine();
+                                                input = input.toLowerCase();
+                                                System.out.println(input);
+                                                int index2 = 0;
+                                                for(int d = 0; d < myCharacters.size(); d++){
+                                                    if(myCharacters.get(d).getName().toLowerCase().equals(input)){
+                                                        break;
                                                     }
-                                                    break;
-                                                case "Sword":
-                                                    break;
-                                                case "Shield":
-                                                    break;
-                                                default:
-                                                    System.out.println("Since Luna has no weapon, she has not any special action.");
-                                                    break;
+                                                    index2++;
+                                                }
+                                                Wands wandOfHealer = (Wands) healer.getWieldedWeapon();
+                                                double heal = wandOfHealer.heal(healer);
+                                                System.out.println(heal);
+                                                myCharacters.get(index2).updateHP(2, heal);
+                                                System.out.println("Updated HP of " + myCharacters.get(index2).getName() + " is " + myCharacters.get(index2).getHP());
+                                                i++;
+                                            }else if(healer.getWieldedWeapon().getType().equals("Sword")){
+                                                System.out.println("You can either stay away or block an enemy for one turn.");
+                                            }else if(healer.getWieldedWeapon().getType().equals("Shield")){
+
+                                            }else{
+                                                System.out.println("Since Luna has no weapon, she has no special action too.");
                                             }
                                             break;
                                         case "check":

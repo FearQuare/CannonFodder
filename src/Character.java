@@ -326,8 +326,12 @@ public abstract class Character implements ICharacterMethods{
     public void updateHP(int choice, double application){
         if(choice == 1){
             this.HP = (int) (this.HP - application);
+        }else if(choice == 2 && ((this.HP + application)>getMaxHP())){
+            this.HP = getMaxHP();
+        }else if(choice == 2){
+            this.HP = (int) (getHP() + application);
         }else{
-            this.HP = (int) (this.HP + application);
+            System.out.println("Oops!");
         }
     }
 
@@ -411,5 +415,9 @@ public abstract class Character implements ICharacterMethods{
 
     public void setStayAway(int stayAway) {
         this.stayAway = stayAway;
+    }
+
+    public long getMaxHP() {
+        return Math.round(0.7*vitality + 0.2*strength + 0.1*intelligence);
     }
 }

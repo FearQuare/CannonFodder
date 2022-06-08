@@ -184,9 +184,231 @@ public class Game {
                                     break;
                                 case "doomsday":
                                     System.out.println("You are playing with Doomsday.");
+                                    int indexd = 0;
+                                    for(int j = 0; j < myCharacters.size(); j++){
+                                        if(myCharacters.get(j).getName().equals("Luna")){
+                                            indexd = j;
+                                        }
+                                    }
+                                    //Action list.
+                                    System.out.println("Which move you want to do?");
+                                    System.out.println("To attack type attack.");
+                                    System.out.println("To make a special action type special action.");
+                                    System.out.println("To check if there are any items on the ground type check."); //While checking, player will be asked if they want to examine it, take it or leave it.
+                                    System.out.println("To check your inventory type inventory.");
+                                    System.out.println("To wield a weapon in your inventory type wield and wear.");//If there is nothing to wield print the situation.
+                                    System.out.println("Type your answer: ");
+                                    //Choosing the action
+                                    String choiced = sc.nextLine();
+                                    choiced = choiced.toLowerCase();
+                                    switch(choiced){
+                                        case "attack":
+                                            System.out.println("Which enemy you want to attack?");
+                                            //Enemy list
+                                            for(int b = 0; b < enemies.size(); b++){
+                                                System.out.println("Name: " + enemies.get(b).getName() +"\nHP: " + enemies.get(b).getHP());
+                                            }
+                                            //Inputting
+                                            System.out.println("Please type their name: ");
+                                            String enemyChoice = sc.nextLine();
+                                            enemyChoice = enemyChoice.toLowerCase();
+                                            //Searching the index of the desired enemy.
+                                            int index1 = 0;
+                                            for(int a = 0; a < enemies.size(); a++){
+                                                if(enemies.get(a).getName().toLowerCase().equals(enemyChoice)){
+                                                    break;
+                                                }
+                                                index1++;
+                                            }
+                                            System.out.println("Doomsday is attacking to " + enemies.get(index1).getName());
+                                            double damage = tank.damage();
+                                            enemies.get(index1).updateHP(1, damage);
+                                            System.out.println("Doomsday has attacked with " + damage +".");
+                                            System.out.println(enemies.get(index1).getName() + " has " + enemies.get(index1).getHP() + " HP." );
+                                            if(enemies.get(index1).getHP()<=0){
+                                                System.out.println(enemies.get(index1).getName() + " is dead.");
+                                                enemies.remove(index1);
+                                            }
+                                            if(enemies.size() > 0){
+                                                System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
+                                            }
+                                            i++;
+                                            break;
+                                        case "special action":
+                                            if(tank.getWieldedWeapon().getType().equals("Wand")){
+                                                System.out.println("Which character you want to heal?");
+                                                for(int c = 0; c < myCharacters.size(); c++){
+                                                    System.out.println(myCharacters.get(c).getName() + " has " + myCharacters.get(c).getHP());
+                                                }
+                                                String input = sc.nextLine();
+                                                input = input.toLowerCase();
+                                                System.out.println(input);
+                                                int index2 = 0;
+                                                for(int d = 0; d < myCharacters.size(); d++){
+                                                    if(myCharacters.get(d).getName().toLowerCase().equals(input)){
+                                                        break;
+                                                    }
+                                                    index2++;
+                                                }
+                                                Wands wandOfTank = (Wands) tank.getWieldedWeapon();
+                                                double heal = wandOfTank.heal(tank);
+                                                System.out.println(heal);
+                                                myCharacters.get(index2).updateHP(2, heal);
+                                                System.out.println("Updated HP of " + myCharacters.get(index2).getName() + " is " + myCharacters.get(index2).getHP());
+                                                i++;
+                                            }else if(tank.getWieldedWeapon().getType().equals("Sword")){
+                                                System.out.println("You can either stay away or block an enemy for one turn.");
+                                            }else if(tank.getWieldedWeapon().getType().equals("Shield")){
+                                                System.out.println("The special action of the shield is only activated if and only if when an enemy attacks.");
+                                            }else{
+                                                System.out.println("Since Doomsday has no weapon, she has no special action too.");
+                                            }
+                                            break;
+                                        case "check":
+                                            if(levelItems.isEmpty()){
+                                                System.out.println("Instantly there are no items on the ground in this level.");
+                                            }else{
+                                                System.out.println("There are: ");
+                                                for(int k = 0; k<levelItems.size(); k++){
+                                                    System.out.println("Item " + (k+1) + ":");
+                                                    levelItems.get(k).printInfo();
+                                                    System.out.println(" ");
+                                                }
+                                                System.out.println("Would you like to pick up an item?");
+                                                int itemIndex = sc.nextInt();
+                                                sc.nextLine();
+                                                itemIndex = itemIndex - 1;
+                                                tank.addInventory(levelItems.get(itemIndex));
+                                            }
+                                            break;
+                                        case "inventory":
+                                            if(tank.getInventory().isEmpty()){
+                                                System.out.println("The inventory is empty.");
+                                            }else{
+                                                tank.printInventory();
+                                            }
+                                            break;
+                                        case "wield and wear":
+                                            tank.switchWielded();
+                                            break;
+                                        default:
+                                            System.out.println("Please enter a valid input next time.");
+                                            break;
+                                    }
                                     break;
                                 case "fear":
                                     System.out.println("You are playing with Fear.");
+                                    int indexf = 0;
+                                    for(int j = 0; j < myCharacters.size(); j++){
+                                        if(myCharacters.get(j).getName().equals("Luna")){
+                                            indexf = j;
+                                        }
+                                    }
+                                    //Action list.
+                                    System.out.println("Which move you want to do?");
+                                    System.out.println("To attack type attack.");
+                                    System.out.println("To make a special action type special action.");
+                                    System.out.println("To check if there are any items on the ground type check."); //While checking, player will be asked if they want to examine it, take it or leave it.
+                                    System.out.println("To check your inventory type inventory.");
+                                    System.out.println("To wield a weapon in your inventory type wield and wear.");//If there is nothing to wield print the situation.
+                                    System.out.println("Type your answer: ");
+                                    //Choosing the action
+                                    String choicef = sc.nextLine();
+                                    choicef = choicef.toLowerCase();
+                                    switch(choicef){
+                                        case "attack":
+                                            System.out.println("Which enemy you want to attack?");
+                                            //Enemy list
+                                            for(int b = 0; b < enemies.size(); b++){
+                                                System.out.println("Name: " + enemies.get(b).getName() +"\nHP: " + enemies.get(b).getHP());
+                                            }
+                                            //Inputting
+                                            System.out.println("Please type their name: ");
+                                            String enemyChoice = sc.nextLine();
+                                            enemyChoice = enemyChoice.toLowerCase();
+                                            //Searching the index of the desired enemy.
+                                            int index1 = 0;
+                                            for(int a = 0; a < enemies.size(); a++){
+                                                if(enemies.get(a).getName().toLowerCase().equals(enemyChoice)){
+                                                    break;
+                                                }
+                                                index1++;
+                                            }
+                                            System.out.println("Fear is attacking to " + enemies.get(index1).getName());
+                                            double damage = fighter.damage();
+                                            enemies.get(index1).updateHP(1, damage);
+                                            System.out.println("Fear has attacked with " + damage +".");
+                                            System.out.println(enemies.get(index1).getName() + " has " + enemies.get(index1).getHP() + " HP." );
+                                            if(enemies.get(index1).getHP()<=0){
+                                                System.out.println(enemies.get(index1).getName() + " is dead.");
+                                                enemies.remove(index1);
+                                            }
+                                            if(enemies.size() > 0){
+                                                System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
+                                            }
+                                            i++;
+                                            break;
+                                        case "special action":
+                                            if(fighter.getWieldedWeapon().getType().equals("Wand")){
+                                                System.out.println("Which character you want to heal?");
+                                                for(int c = 0; c < myCharacters.size(); c++){
+                                                    System.out.println(myCharacters.get(c).getName() + " has " + myCharacters.get(c).getHP());
+                                                }
+                                                String input = sc.nextLine();
+                                                input = input.toLowerCase();
+                                                System.out.println(input);
+                                                int index2 = 0;
+                                                for(int d = 0; d < myCharacters.size(); d++){
+                                                    if(myCharacters.get(d).getName().toLowerCase().equals(input)){
+                                                        break;
+                                                    }
+                                                    index2++;
+                                                }
+                                                Wands wandOfFighter = (Wands) fighter.getWieldedWeapon();
+                                                double heal = wandOfFighter.heal(fighter);
+                                                System.out.println(heal);
+                                                myCharacters.get(index2).updateHP(2, heal);
+                                                System.out.println("Updated HP of " + myCharacters.get(index2).getName() + " is " + myCharacters.get(index2).getHP());
+                                                i++;
+                                            }else if(fighter.getWieldedWeapon().getType().equals("Sword")){
+                                                System.out.println("You can either stay away or block an enemy for one turn.");
+                                            }else if(fighter.getWieldedWeapon().getType().equals("Shield")){
+                                                System.out.println("The special action of the shield is only activated if and only if when an enemy attacks.");
+                                            }else{
+                                                System.out.println("Since Fear has no weapon, she has no special action too.");
+                                            }
+                                            break;
+                                        case "check":
+                                            if(levelItems.isEmpty()){
+                                                System.out.println("Instantly there are no items on the ground in this level.");
+                                            }else{
+                                                System.out.println("There are: ");
+                                                for(int k = 0; k<levelItems.size(); k++){
+                                                    System.out.println("Item " + (k+1) + ":");
+                                                    levelItems.get(k).printInfo();
+                                                    System.out.println(" ");
+                                                }
+                                                System.out.println("Would you like to pick up an item?");
+                                                int itemIndex = sc.nextInt();
+                                                sc.nextLine();
+                                                itemIndex = itemIndex - 1;
+                                                tank.addInventory(levelItems.get(itemIndex));
+                                            }
+                                            break;
+                                        case "inventory":
+                                            if(fighter.getInventory().isEmpty()){
+                                                System.out.println("The inventory is empty.");
+                                            }else{
+                                                fighter.printInventory();
+                                            }
+                                            break;
+                                        case "wield and wear":
+                                            fighter.switchWielded();
+                                            break;
+                                        default:
+                                            System.out.println("Please enter a valid input next time.");
+                                            break;
+                                    }
                                     break;
                                 default:
                                     System.out.println("Please try a valid input next time.");

@@ -1,6 +1,7 @@
 public class Clothings extends Items{
 
     protected double protection;
+
     public Clothings() {
         super.category = "Clothing";
     }

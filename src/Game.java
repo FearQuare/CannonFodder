@@ -19,9 +19,8 @@ public class Game {
         ArrayList<EnemySoldier> enemies = new ArrayList<>();
         ArrayList<Items> levelItems = new ArrayList<>();
         ArrayList<Character> myCharacters = new ArrayList<>();
-
+        dropWeapon();
         //Setting up the characters
-        System.out.println(dropWeapon().getName());
         //Healer
         Weapons wand = new Wands("Acaica", 1,2,3);
         Clothings armor = new LightArmor("Alchemy Mail", 1,2,1);
@@ -636,31 +635,31 @@ public class Game {
 
     public static Weapons dropWeapon(){
         Weapons[] drop = new Weapons[15];
-        try(Scanner input = new Scanner(Paths.get("Swords.txt"))){
+        try(Scanner input = new Scanner(Paths.get("C:\\Users\\E\\IdeaProjects\\CannonFodder\\src\\Swords.txt"))){
             int i = 0;
             while(input.hasNext()){
                 drop[i] = new Swords(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
-                System.out.println(drop[i].getName() + drop[i].getDamage());
+                i++;
             }
         }catch (NoSuchElementException | IllegalStateException | IOException e){
             e.printStackTrace();
         }
 
-        try(Scanner input = new Scanner(Paths.get("Shields.txt"))){
+        try(Scanner input = new Scanner(Paths.get("C:\\Users\\E\\IdeaProjects\\CannonFodder\\src\\Shields.txt"))){
             int j = 5;
             while(input.hasNext()){
                 drop[j] = new Shields(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
-                System.out.println(drop[j].getName() + drop[j].getDamage());
+                j++;
             }
         }catch (NoSuchElementException | IllegalStateException | IOException e){
             e.printStackTrace();
         }
 
-        try(Scanner input = new Scanner(Paths.get("Wands.txt"))){
+        try(Scanner input = new Scanner(Paths.get("C:\\Users\\E\\IdeaProjects\\CannonFodder\\src\\Wands.txt"))){
             int k = 10;
             while(input.hasNext()){
                 drop[k] = new Swords(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
-                System.out.println(drop[k].getName() + drop[k].getDamage());
+                k++;
             }
         }catch (NoSuchElementException | IllegalStateException | IOException e){
             e.printStackTrace();
@@ -684,7 +683,7 @@ public class Game {
         drop[13] = new Wands("Blood Infused Branch",3,3,4);
         drop[14] = new Wands("Frozen Spire",1,2,1);*/
 
-        int index  = rand.nextInt(0,14);
+        int index  = rand.nextInt(1,14);
         return drop[index];
     }
 }

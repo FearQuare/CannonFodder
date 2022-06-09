@@ -126,6 +126,9 @@ public class Game {
                                                 System.out.println(enemies.get(index1).getName() + " has " + enemies.get(index1).getHP() + " HP." );
                                                 if(enemies.get(index1).getHP()<=0){
                                                     System.out.println(enemies.get(index1).getName() + " is dead.");
+                                                    Weapons newWeapon = dropWeapon();
+                                                    System.out.println(newWeapon.getName() + " has been dropped.");
+                                                    levelItems.add(newWeapon);
                                                     enemies.remove(index1);
                                                 }
                                                 if(enemies.size() > 0){
@@ -266,6 +269,9 @@ public class Game {
                                                 System.out.println(enemies.get(index1).getName() + " has " + enemies.get(index1).getHP() + " HP." );
                                                 if(enemies.get(index1).getHP()<=0){
                                                     System.out.println(enemies.get(index1).getName() + " is dead.");
+                                                    Weapons newWeapon = dropWeapon();
+                                                    System.out.println(newWeapon.getName() + " has been dropped.");
+                                                    levelItems.add(newWeapon);
                                                     enemies.remove(index1);
                                                 }
                                                 if(enemies.size() > 0){
@@ -406,6 +412,9 @@ public class Game {
                                                 System.out.println(enemies.get(index1).getName() + " has " + enemies.get(index1).getHP() + " HP." );
                                                 if(enemies.get(index1).getHP()<=0){
                                                     System.out.println(enemies.get(index1).getName() + " is dead.");
+                                                    Weapons newWeapon = dropWeapon();
+                                                    System.out.println(newWeapon.getName() + " has been dropped.");
+                                                    levelItems.add(newWeapon);
                                                     enemies.remove(index1);
                                                 }
                                                 if(enemies.size() > 0){
@@ -575,7 +584,7 @@ public class Game {
         }
     }
 
-    public Weapons dropWeapon(){
+    public static Weapons dropWeapon(){
         Weapons[] drop = new Weapons[15];
         //Swords
         drop[0] = new Swords("Storm-Weaver",1,1,1);

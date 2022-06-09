@@ -1,7 +1,10 @@
 import jdk.swing.interop.SwingInterOpUtils;
 
+import java.io.IOException;
 import java.lang.Math;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,7 +21,7 @@ public class Game {
         ArrayList<Character> myCharacters = new ArrayList<>();
 
         //Setting up the characters
-
+        System.out.println(dropWeapon().getName());
         //Healer
         Weapons wand = new Wands("Acaica", 1,2,3);
         Clothings armor = new LightArmor("Alchemy Mail", 1,2,1);
@@ -633,7 +636,36 @@ public class Game {
 
     public static Weapons dropWeapon(){
         Weapons[] drop = new Weapons[15];
-        //Swords
+        try(Scanner input = new Scanner(Paths.get("Swords.txt"))){
+            int i = 0;
+            while(input.hasNext()){
+                drop[i] = new Swords(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
+                System.out.println(drop[i].getName() + drop[i].getDamage());
+            }
+        }catch (NoSuchElementException | IllegalStateException | IOException e){
+            e.printStackTrace();
+        }
+
+        try(Scanner input = new Scanner(Paths.get("Shields.txt"))){
+            int j = 5;
+            while(input.hasNext()){
+                drop[j] = new Shields(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
+                System.out.println(drop[j].getName() + drop[j].getDamage());
+            }
+        }catch (NoSuchElementException | IllegalStateException | IOException e){
+            e.printStackTrace();
+        }
+
+        try(Scanner input = new Scanner(Paths.get("Wands.txt"))){
+            int k = 10;
+            while(input.hasNext()){
+                drop[k] = new Swords(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
+                System.out.println(drop[k].getName() + drop[k].getDamage());
+            }
+        }catch (NoSuchElementException | IllegalStateException | IOException e){
+            e.printStackTrace();
+        }
+        /*//Swords
         drop[0] = new Swords("Storm-Weaver",1,1,1);
         drop[1] = new Swords("Destiny's Song",2,2,3);
         drop[2] = new Swords("Gutrender",2,4,5);
@@ -650,9 +682,9 @@ public class Game {
         drop[11] = new Wands("Stormbringer",1,3,4);
         drop[12] = new Wands("Pansophy",1,2,2);
         drop[13] = new Wands("Blood Infused Branch",3,3,4);
-        drop[14] = new Wands("Frozen Spire",1,2,1);
+        drop[14] = new Wands("Frozen Spire",1,2,1);*/
 
-        int index  = rand.nextInt(0,9);
+        int index  = rand.nextInt(0,14);
         return drop[index];
     }
 }

@@ -418,12 +418,24 @@ public class Game {
                             System.out.println("You are going to level up.");
                             i = 3;
                         }
-                        if(enemies.size()>0){
-                            //Some actions for enemy forces but not rn.
-                        }else{
-                            System.out.println("You are going to level up. ");
-                            i = 3;
+                    }
+                    if(enemies.size()>0){
+                        for(int xue = 0; xue < enemies.size(); xue++){
+                            int hua = myCharacters.size();
+                            hua = hua -1;
+                            int randomXue = rand.nextInt(0, hua);
+                            System.out.println(enemies.get(xue).getName() + " is attacking to " + myCharacters.get(hua).getName() + " with a damage " + enemies.get(xue).damage());
+                            double damage = enemies.get(xue).damage();
+                            myCharacters.get(hua).updateHP(1,damage);
+                            System.out.println("Remaining HP of " + myCharacters.get(hua).getHP());
+                            if(myCharacters.get(hua).getHP()<=0){
+                                System.out.println(myCharacters.get(hua).getName() + " is dead T-T");
+                                myCharacters.remove(hua);
+                            }
                         }
+                    }else{
+                        System.out.println("You are going to level up. ");
+                        i = 3;
                     }
                 }
             }else{

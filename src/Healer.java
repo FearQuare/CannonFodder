@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class Healer extends Character{
 
+    private int stayAway = 0;
     private static Random rand = new Random();
     public Healer(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
         super(name, wieldedWeapon, wieldedClothing);
@@ -46,5 +47,15 @@ public class Healer extends Character{
     @Override
     public void setIntelligence() {
         super.intelligence = rand.nextInt(6,10);
+    }
+
+    @Override
+    public int getStayAway() {
+        return stayAway;
+    }
+
+    @Override
+    public void setStayAway(int stayAway) {
+        this.stayAway = stayAway;
     }
 }

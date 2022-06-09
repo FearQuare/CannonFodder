@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class EnemySoldier extends Character{
 
+    boolean block = false;
     private int stunCount;
     private static Random rand = new Random();
     public EnemySoldier(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
@@ -55,5 +56,13 @@ public class EnemySoldier extends Character{
     @Override
     public void setIntelligence() {
         super.intelligence = rand.nextInt(1,5);
+    }
+
+    public boolean isBlock() {
+        return block;
+    }
+
+    public void setBlock(boolean block) {
+        this.block = block;
     }
 }

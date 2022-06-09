@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Tank extends Character{
+
+    private int stayAway = 0;
     private static Random rand = new Random();
     public Tank(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
         super(name, wieldedWeapon, wieldedClothing);
@@ -45,5 +47,15 @@ public class Tank extends Character{
     @Override
     public void setIntelligence() {
         super.intelligence = rand.nextInt(3,7);
+    }
+
+    @Override
+    public int getStayAway() {
+        return stayAway;
+    }
+
+    @Override
+    public void setStayAway(int stayAway) {
+        this.stayAway = stayAway;
     }
 }

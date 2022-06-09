@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Fighter extends Character{
+    private int stayAway = 0;
     private static Random rand = new Random();
 
     public Fighter(String name, Weapons wieldedWeapon, Clothings wieldedClothing) {
@@ -48,5 +49,13 @@ public class Fighter extends Character{
         super.intelligence = rand.nextInt(1,5);
     }
 
+    @Override
+    public int getStayAway() {
+        return stayAway;
+    }
 
+    @Override
+    public void setStayAway(int stayAway) {
+        this.stayAway = stayAway;
+    }
 }

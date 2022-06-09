@@ -497,11 +497,13 @@ public class Game {
                                                         levelItems.get(k).printInfo();
                                                         System.out.println(" ");
                                                     }
-                                                    System.out.println("Would you like to pick up an item?");
+                                                    System.out.println("Would you like to pick up an item? Please enter the index of the item.");
                                                     int itemIndex = sc.nextInt();
                                                     sc.nextLine();
+                                                    //BURAYA TRY CATCH YAP
                                                     itemIndex = itemIndex - 1;
                                                     tank.addInventory(levelItems.get(itemIndex));
+                                                    levelItems.remove(itemIndex);
                                                 }
                                                 break;
                                             case "inventory":
@@ -601,6 +603,7 @@ public class Game {
             }
             level ++;
             enemyAmount = (int)Math.pow(2, level);
+            levelItems.clear();
         }
     }
 

@@ -1,3 +1,5 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Random;
@@ -172,9 +174,13 @@ public class Game {
                                                         case 2:
                                                             int enemyCount = enemies.size();
                                                             enemyCount = enemyCount - 1;
-                                                            int randEnemy = rand.nextInt(0,enemyCount);
-                                                            enemies.get(randEnemy).setBlock(true);
-                                                            System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
+                                                            if(enemyCount == 0){
+                                                                enemies.get(0).setBlock(true);
+                                                            }else {
+                                                                int randEnemy = rand.nextInt(0,enemyCount);
+                                                                enemies.get(randEnemy).setBlock(true);
+                                                                System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
+                                                            }
                                                             i++;
                                                             break;
                                                         default:
@@ -316,9 +322,13 @@ public class Game {
                                                         case 2:
                                                             int enemyCount = enemies.size();
                                                             enemyCount = enemyCount - 1;
-                                                            int randEnemy = rand.nextInt(0,enemyCount);
-                                                            enemies.get(randEnemy).setBlock(true);
-                                                            System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
+                                                            if(enemyCount == 0){
+                                                                enemies.get(0).setBlock(true);
+                                                            }else {
+                                                                int randEnemy = rand.nextInt(0,enemyCount);
+                                                                enemies.get(randEnemy).setBlock(true);
+                                                                System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
+                                                            }
                                                             i++;
                                                             break;
                                                         default:
@@ -366,7 +376,7 @@ public class Game {
                                     break;
                                 case "fear":
                                     if(fighter.getStayAway()>0){
-                                        System.out.println("Fear is not awailable for " + fighter.getStayAway() + " turns.");
+                                        System.out.println("Fear is not available for " + fighter.getStayAway() + " turns.");
                                     }else{
                                         System.out.println("You are playing with Fear.");
                                         int indexf = 0;
@@ -458,9 +468,13 @@ public class Game {
                                                         case 2:
                                                             int enemyCount = enemies.size();
                                                             enemyCount = enemyCount - 1;
-                                                            int randEnemy = rand.nextInt(0,enemyCount);
-                                                            enemies.get(randEnemy).setBlock(true);
-                                                            System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
+                                                            if(enemyCount == 0){
+                                                                enemies.get(0).setBlock(true);
+                                                            }else {
+                                                                int randEnemy = rand.nextInt(0,enemyCount);
+                                                                enemies.get(randEnemy).setBlock(true);
+                                                                System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
+                                                            }
                                                             i++;
                                                             break;
                                                         default:

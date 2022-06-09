@@ -529,41 +529,66 @@ public class Game {
                             i = 3;
                         }
                     }
+                    //Enemy turn
                     if(enemies.size()>0){
-                        for(int xue = 0; xue < enemies.size(); xue++){
+                        for(int xue = 0; xue < enemies.size(); xue++){ //Traversing enemies
                             int hua = myCharacters.size();
-                            hua = hua -1;
+                            hua = hua -1; //Finding the bound of the characters
                             if(hua == 0){
-
-                            }else{
-                              
-                            }
-                            int randomXue = rand.nextInt(0, hua);
-                            if(!enemies.get(xue).isBlock()){
-                                if(myCharacters.get(randomXue).getStayAway()==0){
-                                    if(myCharacters.get(randomXue).getWieldedWeapon().getType().equals("Shield")){
-                                        boolean isBlock = rand.nextBoolean();
-                                        if(!isBlock){
+                                if(!enemies.get(xue).isBlock()){
+                                    if(myCharacters.get(0).getStayAway()==0){
+                                        if(myCharacters.get(0).getWieldedWeapon().getType().equals("Shield")){
+                                            boolean isBlock = rand.nextBoolean();
+                                            if(!isBlock){
+                                                System.out.println(enemies.get(xue).getName() + " is attacking to " + myCharacters.get(0).getName() + " with a damage " + enemies.get(xue).damage());
+                                                double damage = enemies.get(xue).damage();
+                                                myCharacters.get(0).updateHP(1,damage);
+                                                System.out.println("Remaining HP of " + myCharacters.get(0).getHP());
+                                            }else{
+                                                System.out.println(enemies.get(xue).getName() + " has been blocked.");
+                                            }
+                                        }else{
+                                            System.out.println(enemies.get(xue).getName() + " is attacking to " + myCharacters.get(0).getName() + " with a damage " + enemies.get(xue).damage());
+                                            double damage = enemies.get(xue).damage();
+                                            myCharacters.get(0).updateHP(1,damage);
+                                            System.out.println("Remaining HP of " + myCharacters.get(0).getHP());
+                                        }
+                                    }
+                                    if(myCharacters.get(0).getHP()<=0){
+                                        System.out.println(myCharacters.get(0).getName() + " is dead T-T");
+                                        myCharacters.remove(0);
+                                    }
+                                }else{
+                                    System.out.println(enemies.get(xue).getName() + " is not able to move for one turn.");
+                                }
+                            }else {
+                                int randomXue = rand.nextInt(0, hua);
+                                if(!enemies.get(xue).isBlock()){
+                                    if(myCharacters.get(randomXue).getStayAway()==0){
+                                        if(myCharacters.get(randomXue).getWieldedWeapon().getType().equals("Shield")){
+                                            boolean isBlock = rand.nextBoolean();
+                                            if(!isBlock){
+                                                System.out.println(enemies.get(xue).getName() + " is attacking to " + myCharacters.get(randomXue).getName() + " with a damage " + enemies.get(xue).damage());
+                                                double damage = enemies.get(xue).damage();
+                                                myCharacters.get(randomXue).updateHP(1,damage);
+                                                System.out.println("Remaining HP of " + myCharacters.get(randomXue).getHP());
+                                            }else{
+                                                System.out.println(enemies.get(xue).getName() + " has been blocked.");
+                                            }
+                                        }else{
                                             System.out.println(enemies.get(xue).getName() + " is attacking to " + myCharacters.get(randomXue).getName() + " with a damage " + enemies.get(xue).damage());
                                             double damage = enemies.get(xue).damage();
                                             myCharacters.get(randomXue).updateHP(1,damage);
                                             System.out.println("Remaining HP of " + myCharacters.get(randomXue).getHP());
-                                        }else{
-                                            System.out.println(enemies.get(xue));
                                         }
-                                    }else{
-                                        System.out.println(enemies.get(xue).getName() + " is attacking to " + myCharacters.get(randomXue).getName() + " with a damage " + enemies.get(xue).damage());
-                                        double damage = enemies.get(xue).damage();
-                                        myCharacters.get(randomXue).updateHP(1,damage);
-                                        System.out.println("Remaining HP of " + myCharacters.get(randomXue).getHP());
                                     }
+                                    if(myCharacters.get(randomXue).getHP()<=0){
+                                        System.out.println(myCharacters.get(randomXue).getName() + " is dead T-T");
+                                        myCharacters.remove(randomXue);
+                                    }
+                                }else{
+                                    System.out.println(enemies.get(xue).getName() + " is not able to move for one turn.");
                                 }
-                                if(myCharacters.get(randomXue).getHP()<=0){
-                                    System.out.println(myCharacters.get(randomXue).getName() + " is dead T-T");
-                                    myCharacters.remove(randomXue);
-                                }
-                            }else{
-                                System.out.println(enemies.get(xue).getName() + " is not able to move for one turn.");
                             }
                         }
                     }else{

@@ -533,6 +533,11 @@ public class Game {
                         for(int xue = 0; xue < enemies.size(); xue++){
                             int hua = myCharacters.size();
                             hua = hua -1;
+                            if(hua == 0){
+
+                            }else{
+                              
+                            }
                             int randomXue = rand.nextInt(0, hua);
                             if(!enemies.get(xue).isBlock()){
                                 if(myCharacters.get(randomXue).getStayAway()==0){

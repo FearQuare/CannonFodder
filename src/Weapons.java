@@ -19,6 +19,7 @@ public class Weapons extends Items{
     public void printInfo() {
         super.printInfo();
         System.out.println("Damage: " + getDamage());
+        System.out.println("Type: " + getType());
     }
 
     public double getDamage() {

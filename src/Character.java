@@ -268,11 +268,12 @@ public abstract class Character implements ICharacterMethods{
         switch (choice){
             case 1:
                 //Adding wielded weapon to your inventory
-                inventoryW.add(wieldedWeapon);
-                updateInventory();
-                System.out.println(wieldedWeapon.name + " has been added to your inventory.");
-                wieldedWeapon = null; //Empty hand
-
+                if(wieldedWeapon != null){
+                    inventoryW.add(wieldedWeapon);
+                    updateInventory();
+                    System.out.println(wieldedWeapon.name + " has been added to your inventory.");
+                    wieldedWeapon = null; //Empty hand
+                }
                 //Take a weapon in your hand or not?
                 System.out.println("Would you like to pick up some weapon from your inventory? \n" +
                         "For yes press 1 \n" +
@@ -303,11 +304,12 @@ public abstract class Character implements ICharacterMethods{
                 break;
             case 2:
                 //Adding wielded clothing to your inventory
-                inventoryC.add(wieldedClothing);
-                updateInventory();
-                System.out.println(wieldedClothing.name + " has been added to your inventory.");
-                wieldedClothing = null; //Empty hand
-
+                if(wieldedClothing != null){
+                    inventoryC.add(wieldedClothing);
+                    updateInventory();
+                    System.out.println(wieldedClothing.name + " has been added to your inventory.");
+                    wieldedClothing = null; //Empty hand
+                }
                 //Take a clothing in your hand or not?
                 System.out.println("Would you like to pick up some clothing from your inventory? \n" +
                         "For yes press 1 \n" +

@@ -169,6 +169,7 @@ public class Game {
                                                         System.out.println(heal);
                                                         myCharacters.get(index2).updateHP(2, heal);
                                                         System.out.println("Updated HP of " + myCharacters.get(index2).getName() + " is " + myCharacters.get(index2).getHP());
+                                                        System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
                                                         i++;
                                                     }else if(healer.getWieldedWeapon().getType().equals("Sword")){
                                                         System.out.println("You can either stay away or block an enemy for one turn.");
@@ -191,6 +192,7 @@ public class Game {
                                                                     enemies.get(randEnemy).setBlock(true);
                                                                     System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
                                                                 }
+                                                                System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
                                                                 i++;
                                                                 break;
                                                             default:
@@ -330,6 +332,7 @@ public class Game {
                                                         System.out.println(heal);
                                                         myCharacters.get(index2).updateHP(2, heal);
                                                         System.out.println("Updated HP of " + myCharacters.get(index2).getName() + " is " + myCharacters.get(index2).getHP());
+                                                        System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
                                                         i++;
                                                     }else if(tank.getWieldedWeapon().getType().equals("Sword")){
                                                         System.out.println("You can either stay away or block an enemy for one turn.");
@@ -341,6 +344,7 @@ public class Game {
                                                                 Swords swordOfTank = (Swords) tank.getWieldedWeapon();
                                                                 int stayAway = (int) swordOfTank.stayAway(tank);
                                                                 tank.setStayAway(stayAway);
+                                                                System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
                                                                 i++;
                                                                 break;
                                                             case 2:
@@ -353,6 +357,7 @@ public class Game {
                                                                     enemies.get(randEnemy).setBlock(true);
                                                                     System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
                                                                 }
+                                                                System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
                                                                 i++;
                                                                 break;
                                                             default:
@@ -491,6 +496,7 @@ public class Game {
                                                         System.out.println(heal);
                                                         myCharacters.get(index2).updateHP(2, heal);
                                                         System.out.println("Updated HP of " + myCharacters.get(index2).getName() + " is " + myCharacters.get(index2).getHP());
+                                                        System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
                                                         i++;
                                                     }else if(fighter.getWieldedWeapon().getType().equals("Sword")){
                                                         System.out.println("You can either stay away or block an enemy for one turn.");
@@ -513,6 +519,7 @@ public class Game {
                                                                     enemies.get(randEnemy).setBlock(true);
                                                                     System.out.println(enemies.get(randEnemy).getName() + " has been blocked for one turn.");
                                                                 }
+                                                                System.out.println("You have used 1 turn for this action. Remaining turns: " + (3-(i+1)));
                                                                 i++;
                                                                 break;
                                                             default:

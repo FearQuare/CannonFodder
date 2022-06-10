@@ -117,7 +117,15 @@ public abstract class Character implements ICharacterMethods{
         for(int i = 0; i < inventory.size(); i++){
             totalWeight = totalWeight + inventory.get(i).getWeight();
         }
-        totalWeight = totalWeight + wieldedWeapon.weight + wieldedClothing.weight;
+        if(wieldedClothing == null && wieldedWeapon == null){
+            totalWeight = totalWeight;
+        }else if (wieldedClothing == null) {
+            totalWeight = wieldedWeapon.getWeight() + totalWeight;
+        }else if(wieldedWeapon == null){
+            totalWeight = wieldedClothing.getWeight() + totalWeight;
+        }else{
+            totalWeight = totalWeight + wieldedWeapon.weight + wieldedClothing.weight;
+        }
         return totalWeight;
     }
 
@@ -292,6 +300,7 @@ public abstract class Character implements ICharacterMethods{
                     default:
                         break;
                 }
+                break;
             case 2:
                 //Adding wielded clothing to your inventory
                 inventoryC.add(wieldedClothing);
@@ -326,6 +335,7 @@ public abstract class Character implements ICharacterMethods{
                     default:
                         break;
                 }
+                break;
             default:
                 System.out.println("Please enter a valid integer next time.");
                 break;

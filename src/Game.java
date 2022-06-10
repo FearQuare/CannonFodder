@@ -214,6 +214,7 @@ public class Game {
                                                         System.out.println("See you later.");
                                                     }else{
                                                         healer.addInventory(levelItems.get(itemIndex));
+                                                        levelItems.remove(itemIndex);
                                                     }
                                                 }
                                                 break;
@@ -235,7 +236,7 @@ public class Game {
                                     break;
                                 case "doomsday":
                                     if(tank.getStayAway()>0){
-                                        System.out.println("Doomsday is not awailable for " + tank.getStayAway() + " turns.");
+                                        System.out.println("Doomsday is not available for " + tank.getStayAway() + " turns.");
                                     }else{
                                         System.out.println("You are playing with Doomsday.");
                                         int indexd = 0;
@@ -365,6 +366,7 @@ public class Game {
                                                         System.out.println("See you later.");
                                                     }else{
                                                         tank.addInventory(levelItems.get(itemIndex));
+                                                        levelItems.remove(itemIndex);
                                                     }
                                                 }
                                                 break;
@@ -514,7 +516,8 @@ public class Game {
                                                     if(levelItems.get(itemIndex) == null){
                                                         System.out.println("See you later.");
                                                     }else{
-                                                        tank.addInventory(levelItems.get(itemIndex));
+                                                        fighter.addInventory(levelItems.get(itemIndex));
+                                                        levelItems.remove(itemIndex);
                                                     }
                                                 }
                                                 break;

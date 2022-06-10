@@ -87,7 +87,7 @@ public class Game {
                                         System.out.println("Luna is dead :/");
                                     }else{
                                         if(healer.getStayAway()>0){
-                                            System.out.println("Luna is not awailable for " + healer.getStayAway() + " turns.");
+                                            System.out.println("Luna is not available for " + healer.getStayAway() + " turns.");
                                         }else{
                                             System.out.println("You are playing with Luna.");
                                             int index = 0;

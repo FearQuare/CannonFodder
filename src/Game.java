@@ -206,11 +206,15 @@ public class Game {
                                                         levelItems.get(k).printInfo();
                                                         System.out.println(" ");
                                                     }
-                                                    System.out.println("Would you like to pick up an item?");
+                                                    System.out.println("Would you like to pick up an item? If yes please enter their index number. Else enter a number other than the indexes.");
                                                     int itemIndex = sc.nextInt();
                                                     sc.nextLine();
                                                     itemIndex = itemIndex - 1;
-                                                    healer.addInventory(levelItems.get(itemIndex));
+                                                    if(levelItems.get(itemIndex) == null){
+                                                        System.out.println("See you later.");
+                                                    }else{
+                                                        healer.addInventory(levelItems.get(itemIndex));
+                                                    }
                                                 }
                                                 break;
                                             case "inventory":
@@ -353,11 +357,15 @@ public class Game {
                                                         levelItems.get(k).printInfo();
                                                         System.out.println(" ");
                                                     }
-                                                    System.out.println("Would you like to pick up an item?");
+                                                    System.out.println("Would you like to pick up an item? If yes please enter their index number. Else enter a number other than the indexes.");
                                                     int itemIndex = sc.nextInt();
                                                     sc.nextLine();
                                                     itemIndex = itemIndex - 1;
-                                                    tank.addInventory(levelItems.get(itemIndex));
+                                                    if(levelItems.get(itemIndex) == null){
+                                                        System.out.println("See you later.");
+                                                    }else{
+                                                        tank.addInventory(levelItems.get(itemIndex));
+                                                    }
                                                 }
                                                 break;
                                             case "inventory":
@@ -499,13 +507,15 @@ public class Game {
                                                         levelItems.get(k).printInfo();
                                                         System.out.println(" ");
                                                     }
-                                                    System.out.println("Would you like to pick up an item? Please enter the index of the item.");
+                                                    System.out.println("Would you like to pick up an item? If yes please enter their index number. Else enter a number other than the indexes.");
                                                     int itemIndex = sc.nextInt();
                                                     sc.nextLine();
-                                                    //BURAYA TRY CATCH YAP
                                                     itemIndex = itemIndex - 1;
-                                                    tank.addInventory(levelItems.get(itemIndex));
-                                                    levelItems.remove(itemIndex);
+                                                    if(levelItems.get(itemIndex) == null){
+                                                        System.out.println("See you later.");
+                                                    }else{
+                                                        tank.addInventory(levelItems.get(itemIndex));
+                                                    }
                                                 }
                                                 break;
                                             case "inventory":

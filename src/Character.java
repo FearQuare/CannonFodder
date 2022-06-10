@@ -202,46 +202,51 @@ public abstract class Character implements ICharacterMethods{
 
     public Items dropInventory(){
         //Listing all items in the inventory.
-        System.out.println("You have those items in your inventory: ");
-        printInventory();
+        if(!inventory.isEmpty()){
+            System.out.println("You have those items in your inventory: ");
+            printInventory();
 
-        //Choosing which one to drop.
-        System.out.println("Which one would you like to drop? Enter the number: ");
-        int drop = sc.nextInt();
-        drop = drop - 1;
-        sc.nextLine();
+            //Choosing which one to drop.
+            System.out.println("Which one would you like to drop? Enter the number: ");
+            int drop = sc.nextInt();
+            drop = drop - 1;
+            sc.nextLine();
 
-        //Dropping functions.
-        if(inventory.get(drop).getCategory().equals("Clothing")){
-            System.out.println(inventory.get(drop).getName() + " has been removed.");
-            int counter = 0;
-            while(counter < inventoryC.size()){
-                if(inventoryC.get(counter) == inventory.get(drop)){
-                    break;
-                }else{
-                    counter++;
+            //Dropping functions.
+            if(inventory.get(drop).getCategory().equals("Clothing")){
+                System.out.println(inventory.get(drop).getName() + " has been removed.");
+                int counter = 0;
+                while(counter < inventoryC.size()){
+                    if(inventoryC.get(counter) == inventory.get(drop)){
+                        break;
+                    }else{
+                        counter++;
+                    }
                 }
+                Items temp = inventory.get(drop);
+                inventoryC.remove(counter);
+                updateInventory();
+                return temp;
             }
-            Items temp = inventory.get(drop);
-            inventoryC.remove(counter);
-            updateInventory();
-            return temp;
-        }
-        else if(inventory.get(drop).getCategory().equals("Weapon")){
-            System.out.println(inventory.get(drop).getName() + " has been removed.");
-            int counter = 0;
-            while(counter < inventoryW.size()){
-                if(inventoryW.get(counter) == inventory.get(drop)){
-                    break;
-                }else{
-                    counter++;
+            else if(inventory.get(drop).getCategory().equals("Weapon")){
+                System.out.println(inventory.get(drop).getName() + " has been removed.");
+                int counter = 0;
+                while(counter < inventoryW.size()){
+                    if(inventoryW.get(counter) == inventory.get(drop)){
+                        break;
+                    }else{
+                        counter++;
+                    }
                 }
+                Items temp = inventory.get(drop);
+                inventoryW.remove(counter);
+                updateInventory();
+                return temp;
+            }else{
+                return null;
             }
-            Items temp = inventory.get(drop);
-            inventoryW.remove(counter);
-            updateInventory();
-            return temp;
         }else{
+            System.out.println("Your inventory is empty.");
             return null;
         }
     }

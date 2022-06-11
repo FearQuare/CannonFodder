@@ -19,7 +19,6 @@ public class Game {
         ArrayList<EnemySoldier> enemies = new ArrayList<>();
         ArrayList<Items> levelItems = new ArrayList<>();
         ArrayList<Character> myCharacters = new ArrayList<>();
-        dropWeapon();
         //Setting up the characters
         //Healer
         Weapons wand = new Wands("Acaica", 1,2,3);

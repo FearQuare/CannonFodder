@@ -13,6 +13,84 @@ public class Game {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
+        try{
+            File myObj = new File("Swords.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        }catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        try {
+            File myObjj = new File("Shileds.txt");
+            if (myObjj.createNewFile()) {
+                System.out.println("File created: " + myObjj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        try {
+            File myObjjj = new File("Wands.txt");
+            if (myObjjj.createNewFile()) {
+                System.out.println("File created: " + myObjjj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter myWriter = new FileWriter("Swords.txt");
+            myWriter.write("Storm-Weaver 1 1 1\n");
+            myWriter.write("Destiny 2 2 3\n");
+            myWriter.write("Gutrender 2 4 5\n");
+            myWriter.write("Terror 3 1 2\n");
+            myWriter.write("Hope 1 5 4\n");
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter myWriterr = new FileWriter("Shields.txt");
+            myWriterr.write("The-Void 1 1 1\n");
+            myWriterr.write("Malice 1 3 2\n");
+            myWriterr.write("Overtrue 2 5 5\n");
+            myWriterr.write("Whistling-Barrier 2 1 1\n");
+            myWriterr.write("Storm-Forged-Buffer 3 1 1\n");
+            myWriterr.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter myWriterrr = new FileWriter("Wands.txt");
+            myWriterrr.write("Will-of-the-Master 1 1 1\n");
+            myWriterrr.write("Malicious 1 3 2\n");
+            myWriterrr.write("Overlock 2 5 5\n");
+            myWriterrr.write("Whistling-Fairies 2 1 1\n");
+            myWriterrr.write("Forge-Star 3 1 1\n");
+            myWriterrr.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
         int level = 0;
         int enemyAmount = 1;
         int turn = 0;

@@ -1,6 +1,6 @@
 import jdk.swing.interop.SwingInterOpUtils;
 
-import java.io.IOException;
+import java.io.*;
 import java.lang.Math;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class Game {
     private static Random rand = new Random();
     private static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int level = 0;
         int enemyAmount = 1;
         int turn = 0;
@@ -76,7 +76,7 @@ public class Game {
                         }
                     }
                     while(i < 3){
-                        if(enemies.size()>0){
+                        if(enemies.size()>0 && myCharacters.size()>0){
                             //Inputting the desired character.
                             System.out.println("With which character you want to make a move? Please type their names: ");
                             String charName = sc.nextLine();
@@ -576,8 +576,12 @@ public class Game {
                                     break;
                             }
                         }else{
-                            System.out.println("You are going to level up.");
-                            i = 3;
+                            if(myCharacters.size() <= 0){
+                                gameFlag = false;
+                            }else{
+                                System.out.println("You are going to level up.");
+                                i = 3;
+                            }
                         }
                     }
                     //Enemy turn
@@ -612,7 +616,7 @@ public class Game {
                                 }else{
                                     System.out.println(enemies.get(xue).getName() + " is not able to move for one turn.");
                                 }
-                            }else {
+                            }else if(hua > 0){
                                 int randomXue = rand.nextInt(0, hua);
                                 if(!enemies.get(xue).isBlock()){
                                     if(myCharacters.get(randomXue).getStayAway()==0){
@@ -640,6 +644,10 @@ public class Game {
                                 }else{
                                     System.out.println(enemies.get(xue).getName() + " is not able to move for one turn.");
                                 }
+                            }else{
+                                gameFlag = false;
+                                System.out.println("Exiting the game...");
+                                enemies.clear();
                             }
                         }
                     }else{
@@ -654,6 +662,26 @@ public class Game {
             enemyAmount = (int)Math.pow(2, level);
             levelItems.clear();
         }
+        File file = new File("maxxLevel.txt");
+        try {
+            if(file.createNewFile()){
+                System.out.println("File created: " + file.getName());
+            }else{
+                System.out.println("File already exists.");
+            }
+        }catch (IOException e){
+            System.out.println("An error ocurreed.");
+            e.printStackTrace();
+        }
+
+        try{
+            FileWriter fw = new FileWriter(file);
+            fw.write(level);
+            fw.close();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println("Successfully implemented.");
     }
 
     public static void setEnemy(int enemyAmount, ArrayList<EnemySoldier> enemies){
@@ -682,7 +710,8 @@ public class Game {
 
     public static Weapons dropWeapon(){
         Weapons[] drop = new Weapons[15];
-        try(Scanner input = new Scanner(Paths.get("C:\\Users\\E\\IdeaProjects\\CannonFodder\\src\\Swords.txt"))){
+
+        try(Scanner input = new Scanner(Paths.get("Swords.txt"))){
             int i = 0;
             while(input.hasNext()){
                 drop[i] = new Swords(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
@@ -692,7 +721,7 @@ public class Game {
             e.printStackTrace();
         }
 
-        try(Scanner input = new Scanner(Paths.get("C:\\Users\\E\\IdeaProjects\\CannonFodder\\src\\Shields.txt"))){
+        try(Scanner input = new Scanner(Paths.get("Shields.txt"))){
             int j = 5;
             while(input.hasNext()){
                 drop[j] = new Shields(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
@@ -702,7 +731,7 @@ public class Game {
             e.printStackTrace();
         }
 
-        try(Scanner input = new Scanner(Paths.get("C:\\Users\\E\\IdeaProjects\\CannonFodder\\src\\Wands.txt"))){
+        try(Scanner input = new Scanner(Paths.get("Wands.txt"))){
             int k = 10;
             while(input.hasNext()){
                 drop[k] = new Swords(input.next(), input.nextInt(), input.nextInt(), input.nextInt());
@@ -711,6 +740,7 @@ public class Game {
         }catch (NoSuchElementException | IllegalStateException | IOException e){
             e.printStackTrace();
         }
+
         /*//Swords
         drop[0] = new Swords("Storm-Weaver",1,1,1);
         drop[1] = new Swords("Destiny's Song",2,2,3);
